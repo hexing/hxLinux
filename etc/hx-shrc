@@ -61,7 +61,7 @@ export LS_COLORS
 
 # colorful man page
 #export PAGER="`which less` -s"
-export PAGER="/usr/bin/less -s"
+export PAGER="/bin/less -s"
 export BROWSER="$PAGER"
 export LESS_TERMCAP_mb=$'\E[01;34m'
 export LESS_TERMCAP_md=$'\E[01;34m'
