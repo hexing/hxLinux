@@ -68,8 +68,8 @@ GBK繁体切换键=CTRL_ALT_F
 反查拼音=CTRL_ALT_E
 全半角=SHIFT_SPACE
 中文标点=ALT_SPACE
-上一页=-
-下一页==
+上一页=- ,
+下一页== .
 第二三候选词选择键=SHIFT
 保存词库=CTRL_ALT_S
 
