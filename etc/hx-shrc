@@ -3,7 +3,7 @@
 mkDir()
 {
 	[[ -d "$1" ]] && return 0
-	mkdir "$1" || echo -e "\e[33m[\e[41;7mERROR\e[0m\e[33m]  \e[4m\e[35;6mCan not mkdir $1!!!\e[0m"
+	mkdir -p "$1" || echo -e "\e[33m[\e[41;7mERROR\e[0m\e[33m]  \e[4m\e[35;6mCan not mkdir $1!!!\e[0m"
 	#mkdir $1 && echo -e "\e[33m[\e[37;41;7mERROR\e[0m\e[33m]  \e[4m\e[35;6mCan not mkdir $1!!!\e[0m"
 }
 
@@ -15,17 +15,20 @@ alias grep='grep --color=auto -E'
 alias find_bin='find /{bin,sbin} /usr/{bin,sbin,local/{bin,sbin}}'
 alias find_lib='find /lib /usr/{lib,local/lib}'
 alias find_pkg='find /var/cache/pacman/pkg'
-alias shutdown='bash /sbin/shutdown.sh -h +0'
+alias shutdown='bash /usr/local/sbin/shutdown.sh -h +0'
 alias du='du -h'
 alias df='df -h'
 alias cp='cp -i'
 #alias rm='rm -I'
 alias rm='rm -i'
 alias mv='mv -i'
+alias mkdir='mkdir -p'
+alias ln='ln -i'
 alias tar='tar -p'
-alias pp='powerpill'
 alias echo='echo -e'
-alias getip='sh /usr/local/bin/getip.sh'
+alias mount='mount -o noatime,nodiratime'
+alias pp='powerpill'
+alias getip='sh /usr/local/sbin/getip.sh'
 
 
 if [[ 'linux' == $TERM ]]; then
@@ -39,7 +42,7 @@ fi
 export MY_TMP_DIR="/tmp/.$USER"
 mkDir $MY_TMP_DIR
 #export PATH=".:$PATH"
-export HISTCONTROL='ignoredups:erasedups'
+export HISTCONTROL='ignoreboth:erasedups'
 export HISTSIZE=96
 export HISTFILESIZE=97
 export HISTFILE="$MY_TMP_DIR/.bash_history"

@@ -10,5 +10,5 @@ fi
 IP=`ping -c 1 "$*" | grep -Eo -m 1 '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'`
 [ '218.83.175.155' = "$IP" ] && echo "Error domain!" && exit
 echo "$IP"
-grep -E -m 1 "$IP" /etc/hosts >/dev/null
+grep -E -m 1 "$IP\s+$*" /etc/hosts >/dev/null
 [ 0 -ne $? ] && echo "$IP\t$*" >> /etc/hosts

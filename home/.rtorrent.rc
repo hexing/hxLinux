@@ -81,7 +81,7 @@ encryption = allow_incoming,enable_retry,prefer_plaintext
 dht = on
 
 # UDP port to use for DHT. 
-dht_port = 33667
+dht_port = 33668
 
 # Enable peer exchange (for torrents not marked private)
 peer_exchange = yes
