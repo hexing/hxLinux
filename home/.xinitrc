@@ -51,11 +51,17 @@ fi
 
 
 export LANG=zh_CN.utf8
+export LC_CTYPE=zh_CN.utf8
+export LC_ALL=zh_CN.utf8
 
-export GTK_IM_MODULE=xim
-export QT_IM_MODULE=xim
 export XMODIFIERS="@im=fcitx"
+export XIM=fcitx
+export XIM_PROGRAM=fcitx
+#export GTK_IM_MODULE=xim
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=xim
 
+fcitx &
 numlockx &
 
 exec startlxde

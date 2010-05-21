@@ -738,13 +738,19 @@
 <application class="Lxterminal">
 	<focus>yes</focus>
 	<decor>no</decor>
-	<fullscreen>no</fullscreen>
+	<fullscreen>yes</fullscreen>
 	<maximized>true</maximized>
 	<desktop>2</desktop>
 	<layout>above</layout>
 </application>
 <application name="chromium">
 	<desktop>3</desktop>
+	<shade>yes</shade>
+</application>
+<application name="opera">
+	<desktop>3</desktop>
+	<fullscreen>yes</fullscreen>
+	<maximized>true</maximized>
 	<shade>yes</shade>
 </application>
 <application class="Pcmanfm">
