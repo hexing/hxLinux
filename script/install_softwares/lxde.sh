@@ -5,10 +5,11 @@
 
 ARR_PACMAN=(
 gamin conky
-leafpad p7zi xarchiver
-lxde lxde-setting-daemon
+leafpad p7zip xarchiver
+lxde lxde-setting-daemon lxappearance
 obconf obmenu obtheme openbox-themes
-gnome-control-center gtk-theme-switch gtk-theme-switch2 xcompmgr transset-df
+gnome-control-center xcompmgr transset-df
+#gtk-theme-switch gtk-theme-switch2
 gnome-icon-theme tango-icon-theme gnome-themes gnome-themes-extras
 )
 
