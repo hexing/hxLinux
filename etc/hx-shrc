@@ -15,7 +15,10 @@ alias grep='grep --color=auto -E'
 alias find_bin='find /{bin,sbin} /usr/{bin,sbin,local/{bin,sbin}}'
 alias find_lib='find /lib /usr/{lib,local/lib}'
 alias find_pkg='find /var/cache/pacman/pkg'
-alias shutdown='bash /usr/local/sbin/shutdown.sh -h +0'
+HX_BIN=/usr/local/sbin
+alias shutdown="sh $HX_BIN/shutdown.sh -h +0"
+alias reboot="sh $HX_BIN/reboot.sh"
+alias getip="sh $HX_BIN/getip.sh"
 alias du='du -h'
 alias df='df -h'
 alias cp='cp -i'
@@ -28,7 +31,6 @@ alias tar='tar -p'
 alias echo='echo -e'
 alias mount='mount -o noatime,nodiratime'
 alias pp='powerpill'
-alias getip='sh /usr/local/sbin/getip.sh'
 
 
 if [[ 'linux' == $TERM ]]; then
