@@ -1,5 +1,6 @@
 #!/bin/sh
 
-/usr/local/sbin/canShutdown.sh || exit
+HX_BIN=/usr/local/sbin
+sh $HX_BIN/canShutdown.sh || exit
 
 reboot $*

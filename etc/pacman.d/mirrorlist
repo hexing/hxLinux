@@ -1,4 +1,5 @@
 Server = http://mirrors.163.com/archlinux/$repo/os/x86_64
+Server = http://mirror.bjtu.edu.cn/ArchLinux/$repo/os/x86_64
 Server = http://mirrors.sohu.com/archlinux/$repo/os/x86_64
 Server = ftp://mirrors.sohu.com/archlinux/$repo/os/x86_64
 #Server = ftp://mirrors.easynews.com/linux/archlinux/$repo/os/x86_64

@@ -34,11 +34,9 @@ alias pp='powerpill'
 
 
 if [[ 'linux' == $TERM ]]; then
-	#export PS1='\[\e[31m[\e[0m\e[31;1m\u\e[0m\e[36m@\e[0m\e[34;4m\h\e[0m \e[32;5m\t\e[0m \e[34;1m\W\e[0m\e[31m]\e[0m\e[33m\$\e[0m\]'
-	#export PS1='\[\e[31m[\e[0m\e[31;1m\u\e[0m\e[36m@ \e[1m\e[32;5m\t\e[0m \e[4m\e[34;1m\W\e[0m\e[31m]\e[0m\e[33m\$\e[0m\]'
-	export PS1='\[\e[31m[\e[0m\e[31;1m\u\e[0m\e[36m@ \e[32;5m\t\e[0m \e[4m\e[34;1m\W\e[0m\e[31m]\e[0m\e[33m\$\e[0m\]'
+	export PS1='\[\e[31m\][\[\e[0m\e[31;1m\]\u\[\e[0m\e[36m\]@ \[\e[32;5m\]\t\[\e[0m\] \[\e[4m\e[34;1m\]\W\[\e[0m\e[31m\]]\[\e[0m\e[33m\]\$\[\e[0m\]'
 elif [[ 'xterm' == $TERM ]]; then
-	export PS1='\[\e[31m[\e[0m\e[31;1m\u\e[0m\e[36m@ \e[4m\e[34;1m\W\e[0m\e[31m]\e[0m\e[33m\$\e[0m\]'
+	export PS1='\[\e[31m\][\[\e[0m\e[31;1m\]\u\[\e[0m\e[36m\]@ \[\e[4m\e[34;1m\]\W\[\e[0m\e[31m\]]\[\e[0m\e[33m\]\$\[\e[0m\]'
 fi
 
 export MY_TMP_DIR="/tmp/.$USER"

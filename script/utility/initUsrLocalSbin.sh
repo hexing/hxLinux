@@ -3,19 +3,14 @@
 HX_LINUX=/opt/hxLinux
 
 
-HX_HOME="$HX_LINUX/home"
+DIR_TO=/usr/local/sbin
+HX_HOME="$HX_LINUX/script/utility"
 F_LIST=(
-.bash_profile
-.bashrc
-.config/fcitx
-.config/openbox
-.fonts
-.inputrc
-.opera/bookmarks.adr
-.opera/keyboard
-.rtorrent.rc
-.ssh
-.xinitrc
+getip.sh
+canShutdown.sh
+shutdown.sh
+deliverIP.sh
+reboot.sh
 )
 
 for i in ${F_LIST[@]}; do
@@ -30,7 +25,7 @@ for i in ${F_LIST[@]}; do
 	[ -e $DIR ] && [ ! -d $DIR ] && echo -e "\e[31;4m$DIR exist! And $DIR is not a directory.\e[0m" && exit 2
 	[ ! -e $DIR ] && (mkdir -p $DIR || (echo -e "\e[31;4mCan't mkdir $DIR.\e[0m" && exit 2))
 
-	ln -is $HX_HOME/$i $i
+	ln -is $HX_HOME/$i $DIR_TO/$i
 	if [ 0 -ne $? ]; then
 		echo -e "\e[31;4mCan't ln $HX_HOME/$i! Would you like to continue?(Y/n)\e[0m"
 		read answer
