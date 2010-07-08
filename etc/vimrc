@@ -16,3 +16,4 @@ runtime! archlinux.vim
 
 syntax on
 set number
+set viminfo=

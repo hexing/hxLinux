@@ -48,7 +48,8 @@ lxde obconf obmenu
 #CNT=${#ARR_PACMAN[@]}
 ARR_YAOURT=(
 rankmirrors
-opera-static
+opera
+west-chamber
 )
 
 #---------------------------------------------------------------------

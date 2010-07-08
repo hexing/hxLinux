@@ -51,7 +51,7 @@ install()
 	if [[ -f $F_SH ]]; then
 		sh $F_SH --install
 	else
-		$EXE -S $1
+		$EXE -S $1 #--noconfirm
 	fi
 
 	if (( 0 == $? )); then
