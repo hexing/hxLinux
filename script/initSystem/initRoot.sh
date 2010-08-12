@@ -6,6 +6,8 @@ DIR_HOME=$1
 [ ! -d $DIR_HOME ] && echo -e "$DIR_HOME is not a directory!" && exit 2
 
 HX_LINUX=/opt/hxLinux
+HX_SCRIPT=$HX_LINUX/script
+HX_INITSYSTEM=$HX_SCRIPT/initSystem
 
 HX_HOME="$HX_LINUX/root"
 F_LIST=(
@@ -33,5 +35,8 @@ for i in ${F_LIST[@]}; do
 		exit 6
 	fi
 done
+
+sh $HX_INITSYSTEM/initUsrLocalSbin.sh || exit 7
+sh $HX_INITSYSTEM/initHome.sh $DIR_HOME || exit 8
 
 echo -e "Success to compelete."

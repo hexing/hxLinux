@@ -31,7 +31,7 @@ for i in ${F_LIST[@]}; do
 
 	DIR_TO=$DIR_HOME/$(dirname $i)
 	[ -e $DIR_TO ] && [ ! -d $DIR_TO ] && echo -e "\e[31;4m$DIR_TO exist! And $DIR_TO is not a directory.\e[0m" && exit 4
-	[ ! -e $DIR_TO ] && (mkdir -p $DIR_TO || (echo -e "\e[31;4mCan't mkdir $DIR_TO.\e[0m" && exit 5))
+	[ ! -e $DIR_TO ] && (mkdir -p $DIR_TO && chmod a=rwx $DIR_TO || (echo -e "\e[31;4mCan't mkdir $DIR_TO.\e[0m" && exit 5))
 
 	ln -is $HX_HOME/$i $DIR_HOME/$i
 	if [ 0 -ne $? ]; then
