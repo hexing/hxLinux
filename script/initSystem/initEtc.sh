@@ -19,6 +19,7 @@ pacman.conf
 pacman.d/mirrorlist
 resolv.conf
 vimrc
+gvimrc
 )
 
 for i in ${F_LIST[@]}; do
