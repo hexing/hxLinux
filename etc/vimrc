@@ -64,8 +64,10 @@
 			set makeprg=mingw32-make.exe
 		endif
 		set	directory=b:/temp/ "将所有.swp发入指定目录
+		set fileformat=dos
 	else
 		set	directory=/tmp/ "将所有.swp发入指定目录
+		set fileformat=unix
 	endif
 
 	set grepprg=grep\ -nHubE
