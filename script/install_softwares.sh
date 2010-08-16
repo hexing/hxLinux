@@ -43,7 +43,7 @@ elinks wget rtorrent dnsmasq
 #esmtp msmtp nbsmtp ssmtp
 ttf-arphic-ukai ttf-arphic-uming ttf-fireflysung ttf-hannom-usong ttf-dejav ttf-bitstream-vera
 libgl mesa xorg xf86-video-ati ati-dri
-lxde obconf obmenu
+lxde obconf obmenu obTheme
 )
 #CNT=${#ARR_PACMAN[@]}
 ARR_YAOURT=(

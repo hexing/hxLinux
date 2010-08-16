@@ -36,7 +36,7 @@
        the active window is -->
   </placement>
   <theme>
-    <name>Clearlooks-Olive</name>
+    <name>Laza</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -302,17 +302,17 @@
     </keybind>
     <!-- by hexing -->
     <keybind key="W-n">
-	    <action name="Iconify"/>
+      <action name="Iconify"/>
     </keybind>
     <keybind key="W-m">
-	    <action name="ToggleMaximizeFull"/>
+      <action name="ToggleMaximizeFull"/>
     </keybind>
     <keybind key="W-t">
-	    <action name="Execute">
-		    <command>lxterminal</command>
-	    </action>
+      <action name="Execute">
+        <command>lxterminal</command>
+      </action>
     </keybind>
-    </keyboard>
+  </keyboard>
   <mouse>
     <dragThreshold>8</dragThreshold>
     <!-- number of pixels the mouse must move before a drag begins -->
@@ -735,26 +735,26 @@
 
   # end of the example
 -->
-<application class="Lxterminal">
-	<focus>yes</focus>
-	<decor>no</decor>
-	<fullscreen>yes</fullscreen>
-	<maximized>true</maximized>
-	<desktop>2</desktop>
-	<layout>above</layout>
-</application>
-<application name="chromium">
-	<desktop>3</desktop>
-	<shade>yes</shade>
-</application>
-<application name="opera">
-	<desktop>3</desktop>
-	<fullscreen>yes</fullscreen>
-	<maximized>true</maximized>
-	<shade>yes</shade>
-</application>
-<application class="Pcmanfm">
-	<shade>yes</shade>
-</application>
+    <application class="Lxterminal">
+      <focus>yes</focus>
+      <decor>no</decor>
+      <fullscreen>yes</fullscreen>
+      <maximized>true</maximized>
+      <desktop>2</desktop>
+      <layout>above</layout>
+    </application>
+    <application name="chromium">
+      <desktop>3</desktop>
+      <shade>yes</shade>
+    </application>
+    <application name="opera">
+      <desktop>3</desktop>
+      <fullscreen>yes</fullscreen>
+      <maximized>true</maximized>
+      <shade>yes</shade>
+    </application>
+    <application class="Pcmanfm">
+      <shade>yes</shade>
+    </application>
   </applications>
 </openbox_config>

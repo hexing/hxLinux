@@ -20,6 +20,7 @@ F_LIST=(
 .opera/keyboard
 .rtorrent.rc
 .xinitrc
+.themes
 )
 
 for i in ${F_LIST[@]}; do
