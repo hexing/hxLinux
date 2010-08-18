@@ -12,9 +12,9 @@ alias ls='ls -Ah --color=auto --quoting-style=shell'
 alias grep='grep --color=auto -E'
 #DIR_BIN='/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin'
 #alias find_bin="find $DIR_BIN"
-alias find_bin='find /{bin,sbin} /usr/{bin,sbin,local/{bin,sbin}}'
-alias find_lib='find /lib /usr/{lib,local/lib}'
-alias find_pkg='find /var/cache/pacman/pkg'
+alias find_bin='find /{bin,sbin}/ /usr/{bin,sbin,local/{bin,sbin}}/'
+alias find_lib='find /lib/ /usr/{lib,local/lib}/'
+alias find_pkg='find /var/cache/pacman/pkg/'
 HX_BIN=/usr/local/sbin
 alias shutdown="sh $HX_BIN/shutdown.sh -h +0"
 alias reboot="sh $HX_BIN/reboot.sh"
