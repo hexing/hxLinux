@@ -28,7 +28,7 @@
 
 	set viminfo= "退出时不保存信息
 	"set bufhidden=
-	set ambiwidth=double bomb	"设置字节顺序 只有写入的时候才会有效，现在设置是无效的
+	set ambiwidth=double nobomb	"设置字节顺序 只有写入的时候才会有效，现在设置是无效的
 	set history=9 undolevels=36 maxfuncdepth=97
 	set selection=exclusive "inclusive
 
