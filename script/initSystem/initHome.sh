@@ -9,9 +9,9 @@ HX_LINUX=/opt/hxLinux
 
 HX_HOME="$HX_LINUX/home"
 F_LIST=(
-.aurvote
 .bash_profile
 .bashrc
+.config/.aurvote
 .config/fcitx
 .config/openbox
 .fonts
