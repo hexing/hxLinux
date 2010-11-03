@@ -12,17 +12,53 @@ import sys
 import base64
  
 
-def sendMail(mailContent):
-	fromAddr = 'hexing20100113@189.cn'
-	toAddr = '18939771309@189.cn'
+
+def sendMail_gmail(toAddr, subject, mailContent, encode = "utf-8", type = "plain", usr = "hexing.net", pwd = "hexinglq"):
+	fromAddr = 'hexing.job@gmail.com'
 
 	mail = MIMEMultipart()
-	mail['To'] = ','.join(toAddr)
+	#mail['To'] = ','.join(toAddr)
+	mail['To'] = toAddr
 	mail['From'] = fromAddr
-	mail['Subject'] = 'My Address IP'
+	mail['Subject'] = subject
 	mail['Date'] = email.Utils.formatdate(localtime=1)
 
-	body = MIMEText(mailContent, 'plain', 'utf-8')
+	body = MIMEText(mailContent, type, encode)
+	mail.attach(body)
+
+	isTls = True
+	smtp = 'smtp.gmail.com'
+	port = '587'
+	username = usr
+	password = pwd
+
+	try:
+		svr = smtplib.SMTP(smtp, port)
+		if isTls:
+			svr.starttls()
+		svr.login(username, password)
+
+		svr.sendmail(fromAddr, toAddr, mail.as_string())
+		svr.quit()
+	except:
+		#print ("Failed to diliver email:" + toAddr)
+		return False
+
+	#print('Success to diliver email:' + toAddr)
+	return True
+
+
+def sendMail_189(toAddr, subject, mailContent, encode = "utf-8", type = "plain", usr = "hexing.net", pwd = "hexinglq"):
+	fromAddr = 'hexing20100113@189.cn'
+
+	mail = MIMEMultipart()
+	#mail['To'] = ','.join(toAddr)
+	mail['To'] = toAddr
+	mail['From'] = fromAddr
+	mail['Subject'] = subject
+	mail['Date'] = email.Utils.formatdate(localtime=1)
+
+	body = MIMEText(mailContent, type, encode)
 	mail.attach(body)
 
 	isTls = False
@@ -30,33 +66,35 @@ def sendMail(mailContent):
 	port = '25'
 	username = fromAddr
 	password = 'hexiaoxing'
-	username = base64.encodestring(username)
-	password = base64.encodestring(password)
+	username = base64.encodestring(usr)
+	password = base64.encodestring(pwd)
 	username = username[0:len(username)-1]
 	password = password[0:len(password)-1]
-	svr = smtplib.SMTP(smtp, port)
-	#svr.set_debuglevel(1)
-	if isTls:
-		svr.starttls()
-	svr.ehlo_or_helo_if_needed()
-	svr.docmd("AUTH", "LOGIN")
-	svr.docmd(username)
-	svr.docmd(password)
 
-	#isTls = True
-	#smtp = 'smtp.gmail.com'
-	#port = '587'
-	#username = 'hexing.net'
-	#password = 'hexinglq'
-	#svr = smtplib.SMTP(smtp, port)
-	#if isTls:
-	#	svr.starttls()
-	#svr.login(username, password)
+	try:
+		svr = smtplib.SMTP(smtp, port)
+		#svr.set_debuglevel(1)
+		if isTls:
+			svr.starttls()
+		svr.ehlo_or_helo_if_needed()
+		svr.docmd("AUTH", "LOGIN")
+		svr.docmd(username)
+		svr.docmd(password)
 
-	svr.sendmail(fromAddr, toAddr, mail.as_string())
-	svr.quit()
+		svr.sendmail(fromAddr, toAddr, mail.as_string())
+		svr.quit()
+	except:
+		#print("Failure to diliver email:" + toAddr)
+		return False
 
-	print('Success to diliver email.')
+	#print('Success to diliver email:' + toAddr)
+	return True
+
+
+def sendMail(mailContent):
+	toAddr = '18939771309@189.cn'
+	subject = 'My Address IP'
+	sendMail_189(toAddr, subject, mailContent)
 
 
 if __name__ == '__main__':

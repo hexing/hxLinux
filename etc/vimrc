@@ -184,7 +184,11 @@ endif
 	command! -range Align : call hexing#hexing_autoload#HX_align_word_column(<line1>, <line2>)
 "}}}1
 
+	if ('linux' == $TERM)
+		set t_Co=256
+	endif
 	colorscheme	random "source $VIMRUNTIME/colors/春山眉wuye.vim
+	"echo g:colors_name
 	if &diff
 		call hexing#hexing_autoload#HX_diff_colorscheme()
 	endif
