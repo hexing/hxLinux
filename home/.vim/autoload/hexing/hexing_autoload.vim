@@ -478,6 +478,40 @@ function! hexing#hexing_autoload#HX_align_word_column(ln_beg, ln_end) "{{{3
 		endfor
 	endfunction
 
+	function! hexing#hexing_autoload#HX_make_paire(cChar) range "{{{3
+		if ('[' == a:cChar || ']' == a:cChar)
+			let l:left = '['
+			let l:right = ']'
+		elseif ('(' == a:cChar || ')' == a:cChar)
+			let l:left = '('
+			let l:right = ')'
+		elseif ('{' == a:cChar || '}' == a:cChar)
+			let l:left = '{'
+			let l:right = '}'
+		else
+			let l:left = a:cChar
+			let l:right = a:cChar
+		endif
+
+		let l:vm = visualmode()
+
+		if char2nr('v') == char2nr(l:vm)
+			let l:ss = getline(a:firstline)
+			let l:ss = strpart(l:ss, 0, col("'<")-1) . l:left . strpart(l:ss, col("'<")-1)
+			call setline(a:firstline, l:ss)
+			let l:st = getline(a:lastline)
+			let l:st = strpart(l:st, 0, col("'>")) . l:right . strpart(l:st, col("'>"))
+			call setline(a:lastline, l:st)
+		elseif char2nr('V') == char2nr(l:vm)
+			let l:ss = getline(a:firstline)
+			let l:ss = strpart(l:ss, 0, col("'<")-1) . l:left . strpart(l:ss, col("'<")-1)
+			call setline(a:firstline, l:ss)
+			let l:st = getline(a:lastline)
+			let l:st = strpart(l:st, 0, col("'>")-1) . l:right . strpart(l:st, col("'>")-1)
+			call setline(a:lastline, l:st)
+		endif
+	endfunction
+
 	"function! hexing#hexing_autoload#HX_debug_test()
 	"	let sFile = expand('<cfile>:p')
 	"	let i = bufloaded(sFile)

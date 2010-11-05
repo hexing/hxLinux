@@ -70,7 +70,9 @@
 		set fileformat=unix
 	endif
 
-	set grepprg=grep\ -nHubE
+	"if executable('grep')
+	"	set grepprg=grep\ -nHubE
+	"endif
 	"grep -nHubE -d skip -e
 
 	"find -type f -name "*.vim" -maxdepth 1
@@ -175,6 +177,12 @@ endif
 
 	"visual mode {{{2
 		vnoremap <silent> <A-F8> :call hexing#hexing_autoload#HX_align_lines()<CR>
+
+		vnoremap <silent> [ :call hexing#hexing_autoload#HX_make_paire('[')<CR>
+		vnoremap <silent> ( :call hexing#hexing_autoload#HX_make_paire('(')<CR>
+		vnoremap <silent> { :call hexing#hexing_autoload#HX_make_paire('{')<CR>
+		vnoremap <silent> ' :call hexing#hexing_autoload#HX_make_paire("'")<CR>
+		vnoremap <silent> " :call hexing#hexing_autoload#HX_make_paire('"')<CR>
 
 	"map
 		map <kPoint> G
