@@ -48,7 +48,7 @@ def sendMail_gmail(toAddr, subject, mailContent, encode = "utf-8", type = "plain
 	return True
 
 
-def sendMail_189(toAddr, subject, mailContent, encode = "utf-8", type = "plain", usr = "hexing.net", pwd = "hexinglq"):
+def sendMail_189(toAddr, subject, mailContent, encode = "utf-8", type = "plain", usr = "hexing20100113@189.cn", pwd = "hexiaoxing"):
 	fromAddr = 'hexing20100113@189.cn'
 
 	mail = MIMEMultipart()
@@ -64,8 +64,8 @@ def sendMail_189(toAddr, subject, mailContent, encode = "utf-8", type = "plain",
 	isTls = False
 	smtp = 'smtp.189.cn'
 	port = '25'
-	username = fromAddr
-	password = 'hexiaoxing'
+	#username = fromAddr
+	#password = 'hexiaoxing'
 	username = base64.encodestring(usr)
 	password = base64.encodestring(pwd)
 	username = username[0:len(username)-1]

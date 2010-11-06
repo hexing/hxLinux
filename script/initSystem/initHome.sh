@@ -1,5 +1,3 @@
-#!/bin/sh
-
 [ 0 -eq $# ] && echo -e "which directory is to be initialized?" && exit 1
 
 DIR_HOME=$1
@@ -21,6 +19,7 @@ F_LIST=(
 .rtorrent.rc
 .xinitrc
 .themes
+.vim
 )
 
 for i in ${F_LIST[@]}; do
