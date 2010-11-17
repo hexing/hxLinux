@@ -9,7 +9,8 @@ mkDir()
 
 
 alias ls='ls -Ah --color=auto --quoting-style=shell'
-alias grep='grep --color=auto -E'
+#alias grep='grep --color=auto -E'
+alias grep='grep --color=auto -P'
 #DIR_BIN='/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin'
 #alias find_bin="find $DIR_BIN"
 alias find_bin='find /{bin,sbin}/ /usr/{bin,sbin,local/{bin,sbin}}/'
