@@ -1,0 +1,12 @@
+[user]
+	name = hexing
+	email = hexiaoxing.net@gmail.com
+[core]
+	editor = vim
+	autocrlf = false
+[merge]
+	tool = vimdiff
+[color]
+	ui = true
+[color "diff"]
+	meta = blue black bold
