@@ -13,13 +13,14 @@ F_LIST=(
 .config/fcitx
 .config/openbox
 .fonts
+.gitconfig
 .inputrc
 .opera/bookmarks.adr
 .opera/keyboard
 .rtorrent.rc
-.xinitrc
 .themes
 .vim
+.xinitrc
 )
 
 for i in ${F_LIST[@]}; do

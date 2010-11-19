@@ -55,10 +55,11 @@ export LC_CTYPE=zh_CN.utf8
 export LC_ALL=zh_CN.utf8
 
 export XMODIFIERS="@im=fcitx"
-export XIM=fcitx
-export XIM_PROGRAM=fcitx
+#export XIM=fcitx
+#export XIM_PROGRAM=fcitx
 #export GTK_IM_MODULE=xim
-export GTK_IM_MODULE=fcitx
+#export GTK_IM_MODULE=fcitx
+export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
 
 fcitx &

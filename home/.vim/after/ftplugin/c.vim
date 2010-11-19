@@ -59,6 +59,7 @@ endif
 	nnoremap <buffer> <silent> <A-h> :call hexing#c_hx#HX_header_file()<CR>
 	"nnoremap <buffer> <silent> gf :tabedit <cfile><CR>
 	nnoremap <buffer> <silent> gf :call hexing#c_hx#HX_gf()<CR>
+	nnoremap <buffer> <silent> ; :call setline('.', getline('.').';')<CR>
 
 	"inoremap <buffer> <silent> { {}<Left><CR><Up><End><CR>
 	"inoremap <buffer> <silent> [ []<Left>
