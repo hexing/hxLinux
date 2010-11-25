@@ -25,3 +25,11 @@ if has("gui_running")
 		set guifontwide=AR\ PL\ UKai\ CN\ 16
 	endif
 endif
+
+" Nice window title
+if has('title') && (has('gui_running') || &title)
+set titlestring=
+set titlestring+=%f\ " file name
+set titlestring+=%h%m%r%w " flag
+set titlestring+=\ -\ %{v:progname} " program name
+endif

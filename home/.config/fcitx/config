@@ -1,112 +1,150 @@
-[³ÌĞò]
-ÏÔÊ¾×ÖÌå(ÖĞ)=*
-ÏÔÊ¾×ÖÌå(Ó¢)=*
-ÏÔÊ¾×ÖÌå´óĞ¡=17
-Ö÷´°¿Ú×ÖÌå´óĞ¡=13
-×ÖÌåÇøÓò=zh_CN.UTF-8
-Ê¹ÓÃAA×ÖÌå=1
-Ê¹ÓÃ´ÖÌå=1
-Ê¹ÓÃÍĞÅÌÍ¼±ê=1
-Ê¹ÓÃDBus½Ó¿Ú=0
+[Program]
+# å­—ä½“
+Font=
+# å­—ä½“åŒºåŸŸ
+FontLocale=zh_CN.UTF-8
+# è®°å½•æ–‡ä»¶
+RecordFile=
+# ä½¿ç”¨ç³»ç»Ÿæ‰˜ç›˜
+UseTray=True
+# ä½¿ç”¨DBusæ¥æ˜¾ç¤ºç•Œé¢(éœ€è¦KIMPanel)
+UseDBus=False
+# åœ¨Fcitxå¯ç”¨é™„åŠ ç»„ä»¶
+EnableAddons=True
+# FcitxçœŸæ­£å¯åŠ¨å‰å»¶è¿Ÿçš„ç§’æ•°
+DelayStart=0
 
-[Êä³ö]
-Êı×Öºó¸ú°ë½Ç·ûºÅ=1
-Enter¼üĞĞÎª=2
-·ÖºÅ¼üĞĞÎª=2
-´óĞ´×ÖÄ¸ÊäÈëÓ¢ÎÄ=1
-×ª»»Ó¢ÎÄÖĞµÄ±êµã=1
-ÁªÏë·½Ê½½ûÖ¹·­Ò³=1
+[Output]
+# æ•°å­—åè·ŸåŠè§’ç¬¦å·
+HalfPuncAfterNumber=True
+# å›è½¦é”®æ“ä½œ
+EnterAction=Commit
+# åˆ†å·é”®æ“ä½œ
+SemiColonAction=QuickPhrase
+# å¤§å†™æ—¶è¾“å…¥è‹±æ–‡
+InputEngByCapitalChar=True
+# è½¬æ¢ä¸­æ–‡æ ‡ç‚¹
+ConvertPunc=True
+# è”æƒ³æ¨¡å¼ç¦ç”¨ç¿»é¡µ
+LegendModeDisablePaging=True
+# å¿«é€Ÿåˆ‡æ¢è‹±æ–‡æ¨¡å¼æ—¶ä¸Šå±
+SendTextWhenSwitchEng=False
 
-[½çÃæ]
-ºòÑ¡´Ê¸öÊı=9
-Ö÷´°¿ÚÊ¹ÓÃ3D½çÃæ=0
-ÊäÈëÌõÊ¹ÓÃ3D½çÃæ=1
-Ö÷´°¿ÚÒş²ØÄ£Ê½=1
-ÏÔÊ¾ĞéÄâ¼üÅÌ=0
-ÊäÈëÌõ¾ÓÖĞ=1
-Ê×´ÎÏÔÊ¾ÊäÈëÌõ=1
-# ÊäÈëÌõ¹Ì¶¨¿í¶È(½öÊÊÓÃÓÚÂë±íÊäÈë·¨)£¬0±íÊ¾²»¹Ì¶¨¿í¶È
-ÊäÈëÌõ¹Ì¶¨¿í¶È=0
-ÊäÈëÌõÆ«ÒÆÁ¿X=0
-ÊäÈëÌõÆ«ÒÆÁ¿Y=12
-ĞòºÅºó¼Óµã=1
-ÏÔÊ¾´ò×ÖËÙ¶È=0
-ÏÔÊ¾°æ±¾=1
-¹â±êÉ«=102 159 66
-Ö÷´°¿Ú±³¾°É«=255 255 255
-Ö÷´°¿ÚÏßÌõÉ«=203 202 186
-Ö÷´°¿ÚÊäÈë·¨Ãû³ÆÉ«=153 153 153 102 159 66 56 134 230
-ÊäÈë´°±³¾°É«=255 255 255
-ÊäÈë´°ÌáÊ¾É«=2 89 196
-ÊäÈë´°ÓÃ»§ÊäÈëÉ«=255 0 132
-ÊäÈë´°ĞòºÅÉ«=0 66 200
-ÊäÈë´°µÚÒ»¸öºòÑ¡×ÖÉ«=0 99 200
-#¸ÃÑÕÉ«ÖµÖ»ÓÃÓÚÆ´ÒôÖĞµÄÓÃ»§×ÔÔì´Ê
-ÊäÈë´°ÓÃ»§´Ê×éÉ«=0 99 200
-ÊäÈë´°ÌáÊ¾±àÂëÉ«=255 0 132
-#Îå±Ê¡¢Æ´ÒôµÄµ¥×Ö/ÏµÍ³´Ê×é¾ùÊ¹ÓÃ¸ÃÑÕÉ«
-ÊäÈë´°ÆäËüÎÄ±¾É«=56 134 230
-ÊäÈë´°ÏßÌõÉ«=203 202 186
-ÊäÈë´°¼ıÍ·É«=193 227 151
-ĞéÄâ¼üÅÌ´°±³¾°É«=220 220 220
-ĞéÄâ¼üÅÌ´°×ÖÄ¸É«=80 0 0
-ĞéÄâ¼üÅÌ´°·ûºÅÉ«=0 0 0
+[Appearance]
+# å€™é€‰è¯ä¸ªæ•°
+CandidateWordNumber=9
+# ä¸»çª—å£éšè—æ¨¡å¼
+MainWindowHideMode=Show
+# è¾“å…¥çª—å£æ˜¾ç¤ºåœ¨æ­£ä¸­
+CenterInputWindow=False
+# åˆ‡æ¢è¾“å…¥æ—¶æ˜¾ç¤ºè¾“å…¥æ¡
+ShowInputWindowAfterTriggering=True
+# åºå·ååŠ ç‚¹
+ShowPointAfterIndex=True
+# æ˜¾ç¤ºè¾“å…¥é€Ÿåº¦
+ShowInputSpeed=True
+# æ˜¾ç¤ºç‰ˆæœ¬
+ShowVersion=True
+# ç¯å¢ƒæœªé…ç½®æ­£ç¡®æ—¶æ˜¾ç¤ºæç¤ºçª—å£
+ShowHintWindow=False
+# çš®è‚¤åç§°
+SkinType=default
 
-# ³ıÁË¡°ÖĞÓ¢ÎÄ¿ìËÙÇĞ»»¼ü¡±Íâ£¬ÆäËüµÄÈÈ¼ü¾ù¿ÉÉèÖÃÎªÁ½¸ö£¬ÖĞ¼äÓÃ¿Õ¸ñ·Ö¸ô
-[ÈÈ¼ü]
-´ò¿ª/¹Ø±ÕÊäÈë·¨=CTRL_SPACE
-# ÖĞÓ¢ÎÄ¿ìËÙÇĞ»»¼ü ¿ÉÒÔÉèÖÃÎªL_CTRL R_CTRL L_SHIFT R_SHIFT L_SUPER R_SUPER
-ÖĞÓ¢ÎÄ¿ìËÙÇĞ»»¼ü=L_CTRL
-Ë«»÷ÖĞÓ¢ÎÄÇĞ»»=0
-»÷¼üÊ±¼ä¼ä¸ô=250
-¹â±ê¸úËæ=CTRL_K
-Òş²ØÖ÷´°¿Ú=CTRL_ALT_H
-ÇĞ»»ĞéÄâ¼üÅÌ=CTRL_ALT_K
-GBKÖ§³Ö=CTRL_M
-GBK·±ÌåÇĞ»»¼ü=CTRL_ALT_F
-ÁªÏë=CTRL_L
-·´²éÆ´Òô=CTRL_ALT_E
-È«°ë½Ç=SHIFT_SPACE
-ÖĞÎÄ±êµã=ALT_SPACE
-ÉÏÒ»Ò³=- ,
-ÏÂÒ»Ò³== .
-µÚ¶şÈıºòÑ¡´ÊÑ¡Ôñ¼ü=SHIFT
-±£´æ´Ê¿â=CTRL_ALT_S
+[Hotkey]
+# å¿«æ·é”®: åˆ‡æ¢è¾“å…¥æ³•
+TriggerKey=CTRL_SPACE
+# å¿«æ·é”®: åˆ‡æ¢ä¸­è‹±æ–‡è¾“å…¥
+ChnEngSwitchKey=L_CTRL
+# åŒå‡»ä¸­è‹±æ–‡åˆ‡æ¢é”®æ—¶åˆ‡æ¢
+DoubleSwitchKey=False
+# è¾“å…¥é—´éš”
+TimeInterval=250
+# å¿«æ·é”®: åˆ‡æ¢å…‰æ ‡è·Ÿéš
+FollowCursorKey=CTRL_K
+# å¿«æ·é”®: éšè—ä¸»çª—å£
+HideMainWindowKey=CTRL_ALT_H
+# å¿«æ·é”®: åˆ‡æ¢è½¯é”®ç›˜
+VKSwitchKey=CTRL_ALT_K
+# å¿«æ·é”®: åˆ‡æ¢ç®€ç¹ä½“ä¸­æ–‡è¾“å…¥
+TraditionalChnSwitchKey=CTRL_ALT_F
+# å¿«æ·é”®: åˆ‡æ¢è”æƒ³æ¨¡å¼
+LegendSwitchKey=CTRL_L
+# å¿«æ·é”®: åæŸ¥æ‹¼éŸ³
+LookupPinyinKey=CTRL_ALT_E
+# å¿«æ·é”®: åˆ‡æ¢å…¨è§’
+FullWidthSwitchKey=SHIFT_SPACE
+# å¿«æ·é”®: åˆ‡æ¢ä¸­è‹±æ–‡æ ‡ç‚¹
+ChnPuncSwitchKey=ALT_SPACE
+# å¿«æ·é”®: å‰ä¸€é¡µ
+PrevPageKey=-
+# å¿«æ·é”®: åä¸€é¡µ
+NextPageKey==
+# å¿«æ·é”®: é€‰æ‹©ç¬¬äºŒç¬¬ä¸‰å€™é€‰è¯
+SecondThirdCandWordKey=SHIFT
+# å¿«æ·é”®: ä¿å­˜é…ç½®åŠè¾“å…¥å†å²
+SaveAllKey=CTRL_ALT_S
+# å¿«æ·é”®: åˆ‡æ¢è®°å½•æ¨¡å¼
+SetRecordingKey=CTRL_ALT_J
+# å¿«æ·é”®: é‡ç½®è®°å½•æ¨¡å¼
+ResetRecordingKey=CTRL_ALT_A
 
-[ÊäÈë·¨]
-Ê¹ÓÃÆ´Òô=1
-Æ´ÒôÃû³Æ=ÖÇÄÜÆ´Òô
-Ê¹ÓÃË«Æ´=1
-Ë«Æ´Ãû³Æ=Ğ¡º×Ë«Æ´
-Ä¬ÈÏË«Æ´·½°¸=Ğ¡º×
-Ê¹ÓÃÇøÎ»=0
-ÇøÎ»Ãû³Æ=ÇøÎ»
-Ê¹ÓÃÂë±í=0
-ÌáÊ¾´Ê¿âÖĞµÄ´Ê×é=1
-ÆäËûÊäÈë·¨=
+[InputMethod]
+# æ‹¼éŸ³è¾“å…¥æ³•ä¼˜å…ˆçº§ï¼Œ0ä¸ºç¦ç”¨
+PinyinOrder=1
+# åŒæ‹¼è¾“å…¥æ³•ä¼˜å…ˆçº§ï¼Œ0ä¸ºç¦ç”¨
+ShuangpinOrder=1
+# é»˜è®¤åŒæ‹¼æ–¹æ¡ˆ
+DefaultShuangpinSchema=å°é¹¤
+# åŒºä½è¾“å…¥æ³•ä¼˜å…ˆçº§ï¼Œ0ä¸ºç¦ç”¨
+QuweiOrder=0
+# ç è¡¨è¾“å…¥æ³•ä¼˜å…ˆçº§ï¼Œ0ä¸ºç¦ç”¨
+TableOrder=1
+# æç¤ºè¯åº“ä¸­è¯ç»„
+PhraseTips=True
 
-[Æ´Òô]
-Ê¹ÓÃÈ«Æ´=0
-Æ´Òô×Ô¶¯×é´Ê=1
-±£´æ×Ô¶¯×é´Ê=0
-Ôö¼ÓÆ´Òô³£ÓÃ×Ö=CTRL_8
-É¾³ıÆ´Òô³£ÓÃ×Ö=CTRL_7
-É¾³ıÆ´ÒôÓÃ»§´Ê×é=CTRL_DELETE
-# Æ´ÒôÒÔ´Ê¶¨×Ö¼ü£¬µÈºÅºóÃæ½ô½Ó¼ü£¬²»ÒªÓĞ¿Õ¸ñ
-Æ´ÒôÒÔ´Ê¶¨×Ö¼ü=[]
-# ÖØÂëµ÷Õû·½Ê½ËµÃ÷£º0-->²»µ÷Õû  1-->¿ìËÙµ÷Õû  2-->°´ÆµÂÊµ÷Õû
-Æ´Òôµ¥×ÖÖØÂëµ÷Õû·½Ê½=2
-Æ´Òô´Ê×éÖØÂëµ÷Õû·½Ê½=1
-Æ´Òô³£ÓÃ´ÊÖØÂëµ÷Õû·½Ê½=0
-Ä£ºıanºÍang=0
-Ä£ºıenºÍeng=0
-Ä£ºıianºÍiang=0
-Ä£ºıinºÍing=0
-Ä£ºıouºÍu=0
-Ä£ºıuanºÍuang=0
-Ä£ºıcºÍch=0
-Ä£ºıfºÍh=0
-Ä£ºılºÍn=0
-Ä£ºısºÍsh=0
-Ä£ºızºÍzh=0
+[Pinyin]
+# ä½¿ç”¨å®Œæ•´æ‹¼éŸ³
+UseCompletePinyin=False
+# è‡ªåŠ¨ç»„è¯
+AutoCreatePhrase=True
+# ä¿å­˜è‡ªåŠ¨è¯ç»„
+SaveAutoPhrase=False
+# å¿«æ·é”®: æ·»åŠ å¸¸ç”¨å­—
+AddFreqWordKey=CTRL_8
+# å¿«æ·é”®: åˆ é™¤å¸¸ç”¨å­—
+DeleteFreqWordKey=CTRL_7
+# å¿«æ·é”®: åˆ é™¤ç”¨æˆ·è¯ç»„
+DeleteUserPhraseKey=CTRL_DELETE
+# å¿«æ·é”®: ä»¥è¯å®šå­—
+InputWordFromPhraseKey=[]
+# å€™é€‰å­—é¡ºåº
+BaseOrder=AdjustFreq
+# å€™é€‰è¯é¡ºåº
+PhraseOrder=AdjustFast
+# å¸¸ç”¨å­—é¡ºåº
+FreqOrder=AdjustNo
+# æ¨¡ç³Šanå’Œang
+FuzzyAnAng=False
+# æ¨¡ç³Šenå’Œeng
+FuzzyEnEng=False
+# æ¨¡ç³Šianå’Œiang
+FuzzyIanIang=False
+# æ¨¡ç³Šinå’Œing
+FuzzyInIng=False
+# æ¨¡ç³Šouå’Œu
+FuzzyOuU=False
+# æ¨¡ç³Šuanå’Œuang
+FuzzyUanUang=False
+# æ¨¡ç³Šcå’Œch
+FuzzyCCh=False
+# æ¨¡ç³Šfå’Œh
+FuzzyFH=False
+# æ¨¡ç³Šlå’Œn
+FuzzyLN=False
+# æ¨¡ç³Šså’Œsh
+FuzzySSH=False
+# æ¨¡ç³Šzå’Œzh
+FuzzyZZH=False
+# ä¿®å¤æ‹¼éŸ³ä¸­ngå’Œgnçš„è¾“å…¥é”™è¯¯
+Misstype=False
 
