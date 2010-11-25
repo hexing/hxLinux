@@ -13,10 +13,14 @@
 	set incsearch hlsearch ignorecase
 	set shortmess=oOtTI "启动的时候不显示那个援助索马里儿童的提示
 	"set showmatch "显示匹配括号
+	"let mapleader=","
+	"set noautoread mouse=a cursorline wildmenu lz hid magic showmatch noerrorbells novisualbell
+	"set so=7 cmdheight=2 mat=4
 
 	set nowrap whichwrap=b,s "不自动换行，只有<BS><SPACE>可以在行间回绕
 	set scrolloff=0	scroll=0 sidescroll=1 sidescrolloff=0
 	set textwidth=0 shiftwidth=4 tabstop=4 softtabstop=4
+	set formatoptions+=mM
 	set smartindent autoindent
 	"set autoread
 	"set cdpath path
@@ -28,7 +32,7 @@
 
 	set viminfo= "退出时不保存信息
 	"set bufhidden=
-	set ambiwidth=double nobomb	"设置字节顺序 只有写入的时候才会有效，现在设置是无效的
+	set nobomb	"设置字节顺序 只有写入的时候才会有效，现在设置是无效的
 	set history=9 undolevels=36 maxfuncdepth=97
 	set selection=exclusive "inclusive
 
@@ -38,9 +42,10 @@
 	"文字编码加入utf8
 	" 设定默认解码
 	"set fenc=utf-8
-	"set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
+	set fencs=usc-bom,utf-8,chinese ",euc-jp,gb18030,gbk,gb2312,cp936
 	"set enc=utf-8
 	"let &termencoding=&encoding
+	set ambiwidth=double
 	 
 	"设置语法折叠
 	"set foldmethod=syntax

@@ -4,7 +4,7 @@
 
 #<ip-address>	<hostname.domain.org>	<hostname>
 127.0.0.1		localhost.localdomain	localhost hxLinux
-60.191.81.189		mirrors.163.com		mirrors-163
+123.58.173.106		mirrors.163.com		mirrors-163
 213.186.62.207		repo.archlinux.fr	repo-archlinuxfr
 208.92.232.29		aur.archlinux.org	aur-archlinuxorg
 210.240.39.7		www.lxde.org		lxde
