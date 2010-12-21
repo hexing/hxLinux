@@ -11,7 +11,7 @@ function!  hexing#c_hx#HX_make(str) "{{{3
 endfunction
 
 function! hexing#c_hx#HX_header_file() "{{{3
-	let l:s=expand('%')
+	let l:s=expand('%:r')
 	let l:s=substitute(l:s,'\.','_','g')
 	let l:s=toupper(l:s)
 	let l:s='__'.l:s.'__'
