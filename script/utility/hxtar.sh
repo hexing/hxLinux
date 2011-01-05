@@ -10,7 +10,7 @@ fi
 Z_7z()
 {
 	#set -x
-	7zr a -si "$1" -t7z -ms=on -mfb=64 -mx=9 -md=32m -m0=lzma
+	7zr a -si "$1" #-t7z -ms=on -mfb=64 -mx=9 -md=32m #-m0=lzma
 	#set +x
 }
 
@@ -33,6 +33,20 @@ EXT=${EXT##*.}
 if [ 2 -eq $# ]; then
 	[ 'x' != $1 ] && exit 3
 	F_TAR=$2
+	EXEC_TAR="$TAR -xf -"
+
+	if [ '7z' == $EXT ]; then
+		7za x -so "$F_TAR" | $EXEC_TAR
+	elif [ 'xz' == $EXT ]; then
+		xz -dc "$F_TAR" | $EXEC_TAR
+	elif [ 'lzma' == $EXT ]; then
+		lzma -dc "$F_TAR" | $EXEC_TAR
+	elif [ 'bz2' == $EXT ]; then
+		bzip2 -dc "$F_TAR" | $EXEC_TAR
+	elif [ 'gz' == $EXT ]; then
+		gzip -dc "$F_TAR" | $EXEC_TAR
+	fi
+
 #Archive
 elif [ 3 -eq $# ]; then
 	[ 'c' != $1 ] && exit 4
@@ -46,6 +60,12 @@ elif [ 3 -eq $# ]; then
 	elif [ '7z' == $EXT ]; then
 		$EXEC_TAR | Z_7z $F_TAR
 	elif [ 'xz' == $EXT ]; then
-		$EXEC_TAR | xz -z -7 - $F_TAR
+		$EXEC_TAR | xz -zc7v - > $F_TAR
+	elif [ 'lzma' == $EXT ]; then
+		$EXEC_TAR | lzma -zc7v - > $F_TAR
+	elif [ 'bz2' == $EXT ]; then
+		$EXEC_TAR | bzip2 -zc9v - > $F_TAR
+	elif [ 'gz' == $EXT ]; then
+		$EXEC_TAR | gzip -c6v - > $F_TAR
 	fi
 fi

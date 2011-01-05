@@ -8,7 +8,7 @@ mkDir()
 }
 
 
-alias ls='ls -Ah --color=auto --quoting-style=shell'
+alias ls='ls -Ahp --color=auto --quoting-style=shell'
 #alias grep='grep --color=auto -E'
 alias grep='grep --color=auto -P'
 #DIR_BIN='/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin'

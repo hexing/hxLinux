@@ -16,7 +16,8 @@ if [[ 0 -ne $? ]];then
 fi
 
 MV_TEMP="$TEMP"/"$BN"
-DEST=/mnt/sda12/bios
+#DEST=/mnt/sda12/bios
+DEST=/mnt/sda10/bios06
 echo "mv $MV_TEMP $DEST ......"
 mv "$MV_TEMP" "$DEST" && echo 'Success'
 if [[ 0 -ne $? ]];then
