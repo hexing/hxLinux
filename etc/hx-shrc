@@ -31,7 +31,11 @@ alias ln='ln -i'
 alias tar='tar -p'
 alias echo='echo -e'
 alias mount='mount -o noatime,nodiratime'
+alias pm='pacman'
+alias pmc='pacman-color'
 alias pp='powerpill'
+alias wget='wget -c'
+alias feh='feh --fullscreen --draw-filename'
 
 
 if [[ 'linux' == $TERM ]]; then
