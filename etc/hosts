@@ -3,24 +3,27 @@
 #
 
 #<ip-address>	<hostname.domain.org>	<hostname>
-127.0.0.1		localhost.localdomain	localhost hxLinux
-123.58.173.106		mirrors.163.com		mirrors-163
-213.186.62.207		repo.archlinux.fr	repo-archlinuxfr
-208.92.232.29		aur.archlinux.org	aur-archlinuxorg
-210.240.39.7		www.lxde.org		lxde
-66.211.214.131		www.archlinux.org	archlinux
-72.47.224.113		www.linuxtoy.org	linuxtoy
-220.181.37.151		hi.baidu.com		hi-baidu
+127.0.0.1	localhost.localdomain	localhost hxLinux
+::1		localhost.localdomain	localhost
 
-# End of file
+123.129.214.98	mirrors.sohu.com
+123.58.173.89	mirrors.163.com
+
+66.249.89.99	www.google.com
 66.249.89.104	www.google.com.hk
+216.239.44.95	smtp.google.com
+220.181.37.151	hi.baidu.com
+
+213.186.62.207	repo.archlinux.fr
+208.92.232.29	aur.archlinux.org
+66.211.214.131	www.archlinux.org
+66.211.214.131	wiki.archlinux.org
+72.47.224.113	www.linuxtoy.org
+210.240.39.7	www.lxde.org
+
 114.80.143.197	www.qidian.com
+114.80.143.196	vipreader.qidian.com
 122.11.53.251	www.17k.com
 58.215.101.182	www.zongheng.com
 58.215.101.183	book.zongheng.com
-216.239.44.95	smtp.google.com
 121.14.53.156	www.189.cn
-66.249.89.99	www.google.com
-75.125.29.179	www.dao1.info
-114.80.143.196	vipreader.qidian.com
-66.211.214.131	wiki.archlinux.org

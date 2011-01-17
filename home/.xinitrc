@@ -8,31 +8,11 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
-
-
-
-
-
-
-
     xrdb -merge $sysresources
-
-fi
-
-if [ -f $sysmodmap ]; then
-    xmodmap $sysmodmap
 fi
 
 if [ -f "$userresources" ]; then
-
-
-
-
-
-
-
     xrdb -merge "$userresources"
-
 fi
 
 if [ -f "$usermodmap" ]; then
@@ -55,14 +35,20 @@ export LC_CTYPE=zh_CN.utf8
 export LC_ALL=zh_CN.utf8
 
 export XMODIFIERS="@im=fcitx"
-#export XIM=fcitx
-#export XIM_PROGRAM=fcitx
-#export GTK_IM_MODULE=xim
-#export GTK_IM_MODULE=fcitx
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
+##export XIM=fcitx
+##export XIM_PROGRAM=fcitx
+##export GTK_IM_MODULE=xim
+##export GTK_IM_MODULE=fcitx
 
 fcitx &
 numlockx &
 
-exec startlxde
+#exec startlxde
+
+if [ 'root' == $USER ]; then
+	/etc/rc.d/dbus start
+	modprobe fuse
+fi
+exec ck-launch-session gnome-session

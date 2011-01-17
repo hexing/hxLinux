@@ -2,7 +2,7 @@
 
 ping -c 1 192.168.1.1 1>/dev/null || exit
 
-HX_BIN=/usr/local/sbin
+HX_BIN=/usr/local/bin
 
 MY_IP=`sh $HX_BIN/getip.sh` || exit
 F_IP='/tmp/myIP.txt'

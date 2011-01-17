@@ -38,7 +38,7 @@ optionType()
 
 install()
 {
-	hasInstalled $1 && [[ 0 == $? ]] && echo -e "\e[32;6m$1\e[0m has been installed,contine..." && return
+	hasInstalled $1 && [[ 0 == $? ]] && echo -e "\e[32;6m$1\e[0m has been installed..." && return
 
 	echo -e "Would you like to ${CF_FG_Y}I${CF_RESET}nstall ${CF_FG_R}$1${CF_RESET}?(${CF_UNDERLINE}y/n${CF_RESET})"
 	read yn

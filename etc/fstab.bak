@@ -3,21 +3,21 @@
 #
 # <file system>        <dir>         <type>    <options>          <dump> <pass>
 devpts                 /dev/pts      devpts    defaults            0      0
-shm                    /dev/shm      tmpfs     nodev,nosuid,noatime,size=3g        0      0
-#shm                    /dev/shm      tmpfs     nodev,nosuid,noatime,size=3g,noexec        0      0
+shm                    /dev/shm      tmpfs     nodev,nosuid,noatime,nodiratime,size=3g        0      0
+#shm                    /dev/shm      tmpfs     nodev,nosuid,noatime,nodiratime,size=3g,noexec        0      0
 
 #/dev/cdrom             /media/cd   auto    ro,user,noauto,unhide   0      0
 #/dev/dvd               /media/dvd  auto    ro,user,noauto,unhide   0      0
 #/dev/fd0               /media/fl   auto    user,noauto             0      0
 
 #/dev/sda3
-UUID=7b94b034-325e-4ed7-98a3-64c1dfa34e93 / xfs defaults,noatime 0 1
+UUID=7b94b034-325e-4ed7-98a3-64c1dfa34e93 / xfs defaults,noatime,nodiratime 0 1
 #/dev/sda5
-UUID=aaea2db7-e576-47cd-b850-54cfd6b7214d /home xfs defaults,noatime 0 2
+UUID=aaea2db7-e576-47cd-b850-54cfd6b7214d /home xfs defaults,noatime,nodiratime 0 2
 #/dev/sda6
-UUID=bc1aca34-eb60-495e-9693-18f78bc7bd4d /opt xfs defaults,noatime 0 2
+UUID=bc1aca34-eb60-495e-9693-18f78bc7bd4d /opt xfs defaults,noatime,nodiratime 0 2
 #/dev/sda7
-UUID=b4e44d45-fe0e-4dfb-80e3-c79fa3a76fed /usr xfs defaults,noatime 0 2
+UUID=b4e44d45-fe0e-4dfb-80e3-c79fa3a76fed /usr xfs defaults,noatime,nodiratime 0 2
 
 /dev/shm /tmp none bind 0 0
 /dev/shm /var/tmp none bind 0 0

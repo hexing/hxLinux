@@ -1,11 +1,11 @@
 #!/usr/bin/python
 #coding=utf-8
 
-from email.MIMEMultipart import MIMEMultipart
-from email.MIMEText import MIMEText
-from email.MIMEImage import MIMEImage
-import email.Utils
-from email.Header import Header
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+import email.utils
+from email.header import Header
 import smtplib
 import datetime
 import locale
@@ -21,7 +21,7 @@ def buildEMail(toAddr, fromAddr, subject, mailContent, encode = "utf-8", type = 
 	mail['To'] = toAddr
 	mail['From'] = fromAddr
 	mail['Subject'] = Header(subject, "utf-8")
-	mail['Date'] = email.Utils.formatdate(localtime=True)
+	mail['Date'] = email.utils.formatdate(localtime=True)
 
 	body = MIMEText(mailContent, type, encode)
 	mail.attach(body)
@@ -72,7 +72,8 @@ def sendEmail_gmail(mail, usr = "hexing.net", pwd = "hexinglq"):
 		svr.sendmail(fromAddr, toAddr, mail.as_string())
 		svr.quit()
 	except:
-		#print ("Failed to diliver email:" + mail["To"])
+		print ("Failed to diliver email:" + mail["To"])
+		print(sys.exc_info()[0])
 		#print ("Failed to diliver email:" + mail.as_string())
 		return False
 
@@ -90,14 +91,14 @@ def sendMail_gmail(toAddr, subject, mailContent,
 	return sendEmail_gmail(mail, usr, pwd)
 
 
-def sendEmail_189(mail, usr = "hexing.net", pwd = "hexinglq"):
+def sendEmail_189(mail, usr = b"hexiaoxing20100113@189.cn", pwd = b"hexiaoxing"):
 	fromAddr = mail["From"]
 	toAddr = mail["To"]
 	isTls = False
 	smtp = 'smtp.189.cn'
 	port = '25'
-	username = base64.encodestring(usr)
-	password = base64.encodestring(pwd)
+	username = base64.encodebytes(usr)
+	password = base64.encodebytes(pwd)
 	username = username[0:len(username)-1]
 	password = password[0:len(password)-1]
 
@@ -108,13 +109,15 @@ def sendEmail_189(mail, usr = "hexing.net", pwd = "hexinglq"):
 			svr.starttls()
 		svr.ehlo_or_helo_if_needed()
 		svr.docmd("AUTH", "LOGIN")
+		print(usr, username, pwd, password)
 		svr.docmd(username)
 		svr.docmd(password)
 
 		svr.sendmail(fromAddr, toAddr, mail.as_string())
 		svr.quit()
 	except:
-		#print("Failure to diliver email:" + toAddr)
+		print("Failure to diliver email:" + toAddr)
+		print(sys.exc_info()[0])
 		return False
 
 	#print('Success to diliver email:' + toAddr)
@@ -123,7 +126,7 @@ def sendEmail_189(mail, usr = "hexing.net", pwd = "hexinglq"):
 
 def sendMail_189(toAddr, subject, mailContent,
 		encode = "utf-8", type = "plain",
-		usr = "hexing20100113@189.cn", pwd = "hexiaoxing",
+		usr = b"hexing20100113@189.cn", pwd = b"hexiaoxing",
 		files = []):
 	fromAddr = 'hexing20100113@189.cn'
 	mail = buildEMail(toAddr, fromAddr, subject, mailContent, encode, files = files)
@@ -135,8 +138,8 @@ def sendMail_189(toAddr, subject, mailContent,
 def sendMail(mailContent):
 	toAddr = '18939771309@189.cn'
 	subject = 'My Address IP'
-	sendMail_189(toAddr, subject, mailContent)
-	#sendMail_gmail(toAddr, subject, mailContent)
+	#sendMail_189(toAddr, subject, mailContent)
+	sendMail_gmail(toAddr, subject, mailContent)
 	#sendMail_189("18939771309@189.cn", "工资单 20101111-lili",  "工资单 20101111-lili", files = ["./何幸.7z"])
 	#sendMail_189("hexing.job@gmail.com", "工资单 20101111-mimi",  "工资单 20101111-mimi", files = ["./何幸.7z"])
 	#sendMail_gmail("hexing.job@gmail.com", "工资单 20101111-lulu",  "工资单 20101111-lulu", files = ["./何幸.7z"])

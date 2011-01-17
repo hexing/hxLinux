@@ -11,7 +11,7 @@ F_LIST=(
 .bashrc
 .config/.aurvote
 .config/fcitx
-.config/openbox
+#.config/openbox
 .fonts
 .gitconfig
 .inputrc

@@ -16,9 +16,10 @@ alias grep='grep --color=auto -P'
 alias find_bin='find /{bin,sbin}/ /usr/{bin,sbin,local/{bin,sbin}}/'
 alias find_lib='find /lib/ /usr/{lib,local/lib}/'
 alias find_pkg='find /var/cache/pacman/pkg/'
-HX_BIN=/usr/local/sbin
-alias shutdown="sh $HX_BIN/shutdown.sh -h +0"
-alias reboot="sh $HX_BIN/reboot.sh"
+HX_SBIN=/usr/local/sbin
+alias shutdown="sh $HX_SBIN/shutdown.sh -h +0"
+alias reboot="sh $HX_SBIN/reboot.sh"
+HX_BIN=/usr/local/bin
 alias getip="sh $HX_BIN/getip.sh"
 alias du='du -h'
 alias df='df -h'

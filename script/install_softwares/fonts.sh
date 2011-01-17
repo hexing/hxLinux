@@ -5,8 +5,8 @@
 
 
 ARR_PACMAN=(
-ttf-dejavu ttf-bitstream-vera
-ttf-arphic-ukai ttf-arphic-uming ttf-fireflysung
+ttf-dejavu #ttf-bitstream-vera
+ttf-arphic-ukai #ttf-arphic-uming ttf-fireflysung
 )
 
 ARR_YAOURT=(
