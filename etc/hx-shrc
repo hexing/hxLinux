@@ -9,18 +9,24 @@ mkDir()
 
 
 alias ls='ls -Ahp --color=auto --quoting-style=shell'
+#alias lx='ls -l -BX' #sort by extension
+#alias lz='ls -l -rS' #sort by size
+#alias lt='ls -l -rt' #sort by date
+
 #alias grep='grep --color=auto -E'
 alias grep='grep --color=auto -P'
-#DIR_BIN='/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin'
-#alias find_bin="find $DIR_BIN"
+
 alias find_bin='find /{bin,sbin}/ /usr/{bin,sbin,local/{bin,sbin}}/'
 alias find_lib='find /lib/ /usr/{lib,local/lib}/'
 alias find_pkg='find /var/cache/pacman/pkg/'
+
 HX_SBIN=/usr/local/sbin
 alias shutdown="sh $HX_SBIN/shutdown.sh -h +0"
 alias reboot="sh $HX_SBIN/reboot.sh"
+
 HX_BIN=/usr/local/bin
 alias getip="sh $HX_BIN/getip.sh"
+
 alias du='du -h'
 alias df='df -h'
 alias cp='cp -ip'
@@ -31,12 +37,17 @@ alias mkdir='mkdir -p'
 alias ln='ln -i'
 alias tar='tar -p'
 alias echo='echo -e'
-alias mount='mount -o noatime,nodiratime'
+alias mount='mount -o defaults,async,noatime,nodiratime'
 alias pm='pacman'
 alias pmc='pacman-color'
 alias pp='powerpill'
 alias wget='wget -c'
 alias feh='feh --fullscreen --draw-filename'
+alias date='date "+%A, %B %d, %Y [%T]"'
+
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
 
 
 if [[ 'linux' == $TERM ]]; then

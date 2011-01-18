@@ -1,33 +1,42 @@
 #!/bin/sh
 
-userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
-sysresources=/etc/X11/xinit/.Xresources
-sysmodmap=/etc/X11/xinit/.Xmodmap
-
-# merge in defaults and keymaps
-
-if [ -f $sysresources ]; then
-    xrdb -merge $sysresources
+#ps -ef | grep -P 'dbus' | grep -v 'grep'
+#ps -ef | grep -P '[d]bus'
+pgrep 'dbus'
+if [ 0 -ne $? ]; then
+	if [ 'root' == $USER ]; then
+		/etc/rc.d/dbus start
+	else
+		echo -e 'sudo /etc/rc.d/dbus start'
+		exit
+	fi
+fi
+lsmod | grep 'fuse'
+if [ 0 -ne $? ]; then
+	modprobe fuse
 fi
 
-if [ -f "$userresources" ]; then
-    xrdb -merge "$userresources"
-fi
 
-if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
-fi
+#userresources=$HOME/.Xresources
+#usermodmap=$HOME/.Xmodmap
+#sysresources=/etc/X11/xinit/.Xresources
+#sysmodmap=/etc/X11/xinit/.Xmodmap
+#
+## merge in defaults and keymaps
+#
+#if [ -f $sysresources ]; then
+#    xrdb -merge $sysresources
+#fi
+#
+#if [ -f "$userresources" ]; then
+#    xrdb -merge "$userresources"
+#fi
+#
+#if [ -f "$usermodmap" ]; then
+#    xmodmap "$usermodmap"
+#fi
 
-# start some nice programs
 
-
-
-#twm &
-#xclock -geometry 50x50-1+1 &
-#xterm -geometry 80x50+494+51 &
-#xterm -geometry 80x20+494-0 &
-#exec xterm -geometry 80x66+0+0 -name login
 
 
 export LANG=zh_CN.utf8
@@ -47,8 +56,4 @@ numlockx &
 
 #exec startlxde
 
-if [ 'root' == $USER ]; then
-	/etc/rc.d/dbus start
-	modprobe fuse
-fi
 exec ck-launch-session gnome-session

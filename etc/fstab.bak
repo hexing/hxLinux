@@ -3,7 +3,7 @@
 #
 # <file system>        <dir>         <type>    <options>          <dump> <pass>
 devpts                 /dev/pts      devpts    defaults            0      0
-shm                    /dev/shm      tmpfs     nodev,nosuid,noatime,nodiratime,size=3g        0      0
+shm                    /dev/shm      tmpfs     defaults,nodev,nosuid,noatime,nodiratime,mode=1777,size=3g        0      0
 #shm                    /dev/shm      tmpfs     nodev,nosuid,noatime,nodiratime,size=3g,noexec        0      0
 
 #/dev/cdrom             /media/cd   auto    ro,user,noauto,unhide   0      0

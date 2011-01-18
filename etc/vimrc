@@ -206,9 +206,8 @@ endif
 
 	if ('linux' == $TERM)
 		set t_Co=256
-	else
-		colorscheme	random "source $VIMRUNTIME/colors/春山眉wuye.vim
 	endif
+	colorscheme	random "source $VIMRUNTIME/colors/春山眉wuye.vim
 	if &diff
 		call hexing#hexing_autoload#HX_diff_colorscheme()
 	endif
