@@ -204,7 +204,7 @@ endif
 	command! -range Align : call hexing#hexing_autoload#HX_align_word_column(<line1>, <line2>)
 "}}}1
 
-	if ('linux' == $TERM)
+	if ('linux' == $TERM) || ('xterm' == $TERM)
 		set t_Co=256
 	endif
 	colorscheme	random "source $VIMRUNTIME/colors/春山眉wuye.vim

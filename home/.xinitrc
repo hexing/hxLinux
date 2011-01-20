@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#!/bin/sh
+
 #ps -ef | grep -P 'dbus' | grep -v 'grep'
 #ps -ef | grep -P '[d]bus'
 pgrep 'dbus'
@@ -51,7 +53,7 @@ export QT_IM_MODULE=xim
 ##export GTK_IM_MODULE=xim
 ##export GTK_IM_MODULE=fcitx
 
-fcitx &
+#fcitx &
 numlockx &
 
 #exec startlxde

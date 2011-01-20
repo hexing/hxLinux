@@ -1,6 +1,14 @@
 " OmniCppComplete initialization
 call omni#cpp#complete#Init()
 
+let fn=expand('%:p')
+let fl=getfsize(fn)
+if -1==fl || 0==fl
+	let sExt=expand('%:e')
+	if sExt=~?"h.*"
+		call hexing#c_hx#HX_header_file()
+	endif
+endif
 
 "functions {{{1
 	function! <SID>CppFoldText()
