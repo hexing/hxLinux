@@ -53,7 +53,7 @@ export QT_IM_MODULE=xim
 ##export GTK_IM_MODULE=xim
 ##export GTK_IM_MODULE=fcitx
 
-#fcitx &
+fcitx &
 numlockx &
 
 #exec startlxde

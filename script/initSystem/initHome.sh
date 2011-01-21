@@ -10,7 +10,8 @@ F_LIST=(
 .bash_profile
 .bashrc
 .config/.aurvote
-.config/fcitx
+.config/fcitx/config
+.config/fcitx/sp.dat
 #.config/openbox
 .fonts
 .gitconfig

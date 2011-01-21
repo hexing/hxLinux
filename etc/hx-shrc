@@ -12,6 +12,8 @@ alias ls='ls -Ahp --color=auto --quoting-style=shell'
 #alias lx='ls -l -BX' #sort by extension
 #alias lz='ls -l -rS' #sort by size
 #alias lt='ls -l -rt' #sort by date
+#为命令绑定快捷键
+#bind -x '"\C-l":ls -l'
 
 #alias grep='grep --color=auto -E'
 alias grep='grep --color=auto -P'

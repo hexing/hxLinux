@@ -3,6 +3,7 @@
 #http://github.com/panweizeng/home/tree/master/code/python/dict
 
 import urllib
+from urllib.request import urlopen
 import sys
 import re
 import xml.dom.minidom as xml
@@ -11,7 +12,7 @@ API_URL = 'http://dict.cn/ws.php?utf8=true&q=%s'
 #API_URL = 'http://dict-co.iciba.com/api/dictionary.php?w=%s'
 
 def getword(word):
-    xmls = urllib.urlopen(API_URL%urllib.quote(word)).read()
+    xmls = urlopen(API_URL%urllib.parse.quote(word)).read()
     root = xml.parseString(xmls).documentElement
     #print re.sub(u'>', '>\n',xmls)
 
@@ -39,7 +40,6 @@ def main():
 
 
 if __name__ == '__main__':
-    reload(sys)
-    sys.setdefaultencoding('utf8')
+    #reload(sys)
+    #sys.setdefaultencoding('utf8')
     main()
-
