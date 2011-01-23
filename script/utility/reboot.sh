@@ -1,6 +1,6 @@
 #!/bin/sh
 
-HX_BIN=/usr/local/sbin
+HX_BIN=$(dirname "$0")
 sh $HX_BIN/canShutdown.sh || exit
 
 reboot $*

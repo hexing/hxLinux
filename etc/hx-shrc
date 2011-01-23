@@ -22,12 +22,15 @@ alias find_bin='find /{bin,sbin}/ /usr/{bin,sbin,local/{bin,sbin}}/'
 alias find_lib='find /lib/ /usr/{lib,local/lib}/'
 alias find_pkg='find /var/cache/pacman/pkg/'
 
-HX_SBIN=/usr/local/sbin
+#HX_SBIN=/usr/local/sbin
+HX_SBIN=/opt/hxLinux/script/utility
 alias shutdown="sh $HX_SBIN/shutdown.sh -h +0"
 alias reboot="sh $HX_SBIN/reboot.sh"
 
-HX_BIN=/usr/local/bin
+#HX_BIN=/usr/local/bin
+HX_BIN=/opt/hxLinux/script/utility
 alias getip="sh $HX_BIN/getip.sh"
+alias dict="python $HX_BIN/dict.py"  #|sed -e 's/<em>//g' -e 's/<\/em>//g'
 
 alias du='du -h'
 alias df='df -h'
