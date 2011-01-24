@@ -27,7 +27,8 @@ alias shutdown="sh $HX_SBIN/shutdown.sh -h +0"
 alias reboot="sh $HX_SBIN/reboot.sh"
 
 HX_BIN=/opt/hxLinux/script/utility
-alias getip="sh $HX_BIN/getip.sh"
+#alias getip="sh $HX_BIN/getip.sh"
+alias getip='python /opt/hxLinux/script/utility/getip.py'
 alias dict="python $HX_BIN/dict.py"  #|sed -e 's/<em>//g' -e 's/<\/em>//g'
 
 alias du='du -h'
