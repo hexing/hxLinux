@@ -103,7 +103,7 @@ if [[ 'linux' == $TERM ]]; then
 	#for tty in /dev/tty[1-3]; do
 	#	/usr/bin/setleds -D +num < $tty
 	#done
-	TTY=`ps | grep tty. -o -m 1`
+	TTY=`ps | /bin/grep tty. -o -m 1`
 	if [[ ! -z $TTY ]]; then
 		/usr/bin/setleds -D +num < /dev/$TTY
 	fi

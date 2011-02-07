@@ -8,6 +8,7 @@ pgrep 'dbus'
 if [ 0 -ne $? ]; then
 	if [ 'root' == $USER ]; then
 		/etc/rc.d/dbus start
+		/etc/rc.d/alsa start
 	else
 		echo -e 'sudo /etc/rc.d/dbus start'
 		exit

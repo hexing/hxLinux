@@ -3,6 +3,8 @@
 
 "ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f tag01 E:\develop\Core_Libs
 
+runtime! archlinux.vim
+
 "term settings {{{1
 	syntax enable
 	syntax on
@@ -135,7 +137,9 @@ endif
 	endif
 
 "autocmd {{{1
-		set autochdir "autocmd BufEnter * exec "cd %:p:h"
+		if has('autochdir')
+			set autochdir "autocmd BufEnter * exec "cd %:p:h"
+		endif
 		"autocmd BufEnter * let &titlestring = hostname() . "/" . expand("%:p")
 		autocmd BufReadPre * call hexing#hexing_autoload#HX_OnOpenFile()
 		au BufRead,BufNewFile *.h++	set filetype=cpp
@@ -204,7 +208,10 @@ endif
 	command! -range Align : call hexing#hexing_autoload#HX_align_word_column(<line1>, <line2>)
 "}}}1
 
-	if ('linux' == $TERM) || ('xterm' == $TERM)
+	if !has("gui_running")
+		if &term =~ 'xterm'
+			set term=ansi "避免nnoremap <Esc> 的bug
+		endif
 		set t_Co=256
 	endif
 	colorscheme	random "source $VIMRUNTIME/colors/春山眉wuye.vim

@@ -1,6 +1,6 @@
 "----------------------------------------------------------"
 " Vim meta color file                                      "
-" Maintainer         : W. H. Jou                           "
+" Maintainer         : W. h. Jou                           "
 " Email              : whjou@singnet.com.sg                "
 " Most Recent Update : 2003-09-15                          "
 " Version            : 1.3                                 "
@@ -9,7 +9,12 @@
 if !exists("*s:LoadRandomColorScheme")
   function s:LoadRandomColorScheme()
     let s:self            = globpath(&runtimepath, 'colors/random.vim')
-    let s:color_file_list = globpath(&runtimepath, 'colors/*.vim'     )
+	"let s:color_file_list = globpath(&runtimepath, 'colors/*.vim'     )
+	if has("gui_running")
+		let s:color_file_list = globpath(fnamemodify(s:self, ":h"), 'GUI/*.vim')
+	else
+		let s:color_file_list = globpath(fnamemodify(s:self, ":h"), '*.vim')
+	endif
     let s:self            = substitute(s:self           , '\'          , '/', 'g')
     let s:color_file_list = substitute(s:color_file_list, '\'          , '/', 'g')
     let s:color_file_list = substitute(s:color_file_list, s:self . "\n", '' , 'g')

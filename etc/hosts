@@ -4,7 +4,7 @@
 
 #<ip-address>	<hostname.domain.org>	<hostname>
 127.0.0.1	localhost.localdomain	localhost hxLinux
-::1		localhost.localdomain	localhost
+#::1		localhost.localdomain	localhost
 
 #123.129.214.98	mirrors.sohu.com
 #123.58.173.89	mirrors.163.com
