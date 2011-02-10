@@ -19,8 +19,11 @@ lsmod | grep '[i]pv6'
 
 
 NEED_PKG=(
+aufs2 squashfs-tools
 pdnsd #varnish
-p7zip
+p7zip sqlite3
+#openbox lxde pekwm icewm dwm jwm pwm compiz Tint2
+gpicview feh #gpicview viewnior
 )
 for i in ${NEED_PKG[@]}; do
 	pacman -Q $i 1>/dev/null
@@ -40,8 +43,12 @@ pacman -Qdt
 
 
 for i in $(find ~/ -name '.recently-used.xbel*' -or -name '.lesshst'); do
-
 	echo $i
+done
+
+
+for i in $(ls /proc/sys/vm/dirty_*); do
+	cat $i
 done
 
 

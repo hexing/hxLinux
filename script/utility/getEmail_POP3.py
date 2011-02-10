@@ -4,6 +4,7 @@
 
 import poplib,email.header,email.message
 import os,sys
+import re
 
 
 def connPop3(host, port, usr, pwd):
@@ -74,7 +75,7 @@ def getEmailContent(pop3, id):
 				if ch: 
 					#s += unicode(k.get_payload(decode = True),ch).encode('utf-8') 
 					#s += k.get_payload(decode = True).decode('gb2312').encode('utf-8')
-					s += k.get_payload(decode = True).decode()
+					s += k.get_payload(decode = True).decode(ch, 'replace')
 				else: 
 					#s += k.get_payload(decode = True).decode('gb2312').encode('utf-8')
 					s += k.get_payload(decode = True).decode()
@@ -93,20 +94,19 @@ if (__name__ == '__main__'):
 
 		while True:
 			sCmd = input('input the command(List/Read/Delete/Quit):')
+
 			if 'List'==sCmd or 'L'==sCmd:
 				printSubjectList(p)
-			elif 'Read'==sCmd or 'R'==sCmd:
-				sCmd = input('type the id:')
-				if sCmd.isdigit():
-					n = int(sCmd)
-					print(getEmailContent(p, n))
-			elif 'Delete'==sCmd or 'D'==sCmd:
-				sCmd = input('type the id:')
-				if sCmd.isdigit():
-					n = int(sCmd)
-					p.dele(n)
 			elif 'Quit'==sCmd or 'Q'==sCmd or ''==sCmd:
 				break
+			else:
+				mh = re.search('(?<=^R|^D)\d+$', sCmd)
+				if None != mh:
+					n = int(mh.group(0))
+					if 'R'==sCmd[0]:
+						print(getEmailContent(p, n))
+					elif 'D'==sCmd[0]:
+						p.dele(n)
 
 		p.quit()
 	else:

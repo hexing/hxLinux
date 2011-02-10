@@ -15,7 +15,8 @@ import base64
  
 
 
-def buildEMail(toAddr, fromAddr, subject, mailContent, encode = "utf-8", type = "plain", files = []):
+def buildEMail(toAddr, fromAddr, subject, mailContent,
+		encode="utf-8", type="plain", files=None):
 	mail = MIMEMultipart()
 	#mail['To'] = ','.join(toAddr)
 	mail['To'] = toAddr
@@ -26,9 +27,9 @@ def buildEMail(toAddr, fromAddr, subject, mailContent, encode = "utf-8", type = 
 	body = MIMEText(mailContent, type, encode)
 	mail.attach(body)
 
-	if (0 < len(files)):
+	if (None != files):
 		if (False == addAttachments(mail, files)):
-			return False
+			return None
 	
 	return mail
 
@@ -54,7 +55,7 @@ def addAttachments(mail, files):
 	return True
 
 
-def sendEmail_gmail(mail, usr = "hexing.net", pwd = "hexinglq"):
+def sendEmail_gmail(mail, usr="hexing.net", pwd="hexinglq"):
 	fromAddr = mail["From"]
 	toAddr = mail["To"]
 	isTls = True
@@ -71,6 +72,14 @@ def sendEmail_gmail(mail, usr = "hexing.net", pwd = "hexinglq"):
 
 		svr.sendmail(fromAddr, toAddr, mail.as_string())
 		svr.quit()
+	#except smtplib.SMTPHeloError as e:
+	#	print('SMTPHeloError')
+	#except smtplib.SMTPRecipientsRefused as e:
+	#	print('SMTPRecipientsRefused')
+	#except smtplib.SMTPSenderRefused as e:
+	#	print('SMTPSenderRefused')
+	#except smtplib.SMTPDataError as e:
+	#	print('SMTPDataError')
 	except:
 		print ("Failed to diliver email:" + mail["To"])
 		print(sys.exc_info()[0])
@@ -81,17 +90,7 @@ def sendEmail_gmail(mail, usr = "hexing.net", pwd = "hexinglq"):
 	return True
 
 
-def sendMail_gmail(toAddr, subject, mailContent,
-		encode = "utf-8", type = "plain",
-		usr = "hexing.net", pwd = "hexinglq",
-		files = []):
-	fromAddr = 'hexing.net@gmail.com'
-	mail = buildEMail(toAddr, fromAddr, subject, mailContent, encode, files = files)
-
-	return sendEmail_gmail(mail, usr, pwd)
-
-
-def sendEmail_189(mail, usr = b"hexing20100113@189.cn", pwd = b"hexiaoxing"):
+def sendEmail_189(mail, usr=b"hexing20100113@189.cn", pwd=b"hexiaoxing"):
 	fromAddr = mail["From"]
 	toAddr = mail["To"]
 	isTls = False
@@ -121,26 +120,26 @@ def sendEmail_189(mail, usr = b"hexing20100113@189.cn", pwd = b"hexiaoxing"):
 	return True
 
 
-def sendMail_189(toAddr, subject, mailContent,
-		encode = "utf-8", type = "plain",
-		usr = b"hexing20100113@189.cn", pwd = b"hexiaoxing",
-		files = []):
-	fromAddr = 'hexing20100113@189.cn'
-	mail = buildEMail(toAddr, fromAddr, subject, mailContent, encode, files = files)
-
-	return sendEmail_189(mail, usr, pwd)
-
-
-
 def sendMail(mailContent):
 	toAddr = '18939771309@189.cn'
 	subject = 'My Address IP'
-	sendMail_189(toAddr, subject, mailContent)
-	#sendMail_gmail(toAddr, subject, mailContent)
-	#sendMail_189("18939771309@189.cn", "工资单 20101111-lili",  "工资单 20101111-lili", files = ["./何幸.7z"])
-	#sendMail_189("hexing.job@gmail.com", "工资单 20101111-mimi",  "工资单 20101111-mimi", files = ["./何幸.7z"])
-	#sendMail_gmail("hexing.job@gmail.com", "工资单 20101111-lulu",  "工资单 20101111-lulu", files = ["./何幸.7z"])
-	#sendMail_gmail("18939771309@189.cn", "工资单 20101111a-neo",  "工资单 20101111a-neo", files = ["./何幸.7z"])
+
+	#fromAddr = 'hexing.net@gmail.com'
+	#mail = buildEMail(toAddr, fromAddr, subject, mailContent)
+	##toAddr = "hexing.job@gmail.com"
+	##subject = "工资单 20101111"
+	##fromAddr = 'hexing.net@gmail.com'
+	##files = ["./何幸.7z"]
+	##mail = buildEMail(toAddr, fromAddr, subject, mailContent, files=files)
+	#usr = "hexing.net"
+	#pwd = "hexinglq"
+	#return sendEmail_gmail(mail, usr, pwd)
+
+	fromAddr = 'hexing20100113@189.cn'
+	mail = buildEMail(toAddr, fromAddr, subject, mailContent)
+	usr = b"hexing20100113@189.cn"
+	pwd = b"hexiaoxing"
+	return sendEmail_189(mail, usr, pwd)
 
 
 

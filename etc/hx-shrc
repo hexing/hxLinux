@@ -110,7 +110,7 @@ if [[ 'linux' == $TERM ]]; then
 fi
 
 
-set -o vi
+#set -o vi #set -o emacs
 
 
 #Check for an interactive session

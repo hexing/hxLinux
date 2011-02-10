@@ -89,7 +89,8 @@ def main():
 		s = '\n\t'
 		s = s.join(wi.sExample)
 		s = '\t' + s
-		s = s.replace('<em>'+wi.sKey+'</em>', colorString(wi.sKey, '7'))
+		#s = s.replace('<em>'+wi.sKey+'</em>', colorString(wi.sKey, '7'))
+		s = re.sub(r'<em>(\w+)</em>', colorString(r'\1','7'), s)
 		print(s)
 	else:
 		print('usage:dict [word]')
