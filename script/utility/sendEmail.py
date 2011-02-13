@@ -49,74 +49,96 @@ def addAttachments(mail, files):
 			attachment["Content-Disposition"] = 'attachment; filename="%s"' % fn
 			mail.attach(attachment)
 	except:
-		print("Can't attach file:'" + os.path.basename(f))
+		print("Can't attach file:'" + os.path.basename(f), file=sys.stderr)
 		return False
 
 	return True
 
 
-def sendEmail_gmail(mail, usr="hexing.net", pwd="hexinglq"):
-	fromAddr = mail["From"]
-	toAddr = mail["To"]
+def connSmtp_gmail(username, password):
+	host = 'smtp.gmail.com'
+	port = 587
 	isTls = True
-	smtp = 'smtp.gmail.com'
-	port = '587'
-	username = usr
-	password = pwd
+	usr = username
+	pwd = password
 
 	try:
-		svr = smtplib.SMTP(smtp, port)
+		svr = smtplib.SMTP(host, port)
 		if isTls:
 			svr.starttls()
-		svr.login(username, password)
+		svr.login(usr, pwd)
+	except:
+		return None
+	return svr
 
+
+def sendEmail_gmail(mail, username="hexing.net", password="hexinglq"):
+	svr = connSmtp_gmail(username, password)
+	if None == svr :
+		return False
+
+	fromAddr = mail["From"]
+	toAddr = mail["To"]
+
+	try:
 		svr.sendmail(fromAddr, toAddr, mail.as_string())
 		svr.quit()
 	#except smtplib.SMTPHeloError as e:
-	#	print('SMTPHeloError')
+	#	print('SMTPHeloError', file=sys.stderr)
 	#except smtplib.SMTPRecipientsRefused as e:
-	#	print('SMTPRecipientsRefused')
+	#	print('SMTPRecipientsRefused', file=sys.stderr)
 	#except smtplib.SMTPSenderRefused as e:
-	#	print('SMTPSenderRefused')
+	#	print('SMTPSenderRefused', file=sys.stderr)
 	#except smtplib.SMTPDataError as e:
-	#	print('SMTPDataError')
+	#	print('SMTPDataError', file=sys.stderr)
 	except:
-		print ("Failed to diliver email:" + mail["To"])
-		print(sys.exc_info()[0])
-		#print ("Failed to diliver email:" + mail.as_string())
+		print ("Failed to diliver email:" + mail["To"], file=sys.stderr)
+		print(sys.exc_info()[0], file=sys.stderr)
+		#print ("Failed to diliver email:" + mail.as_string(), file=sys.stderr)
 		return False
 
-	#print('Success to diliver email:' + toAddr)
+	#print('Success to diliver email:' + toAddr, file=sys.stderr)
 	return True
 
 
-def sendEmail_189(mail, usr=b"hexing20100113@189.cn", pwd=b"hexiaoxing"):
-	fromAddr = mail["From"]
-	toAddr = mail["To"]
+def connSmtp_189(username, password):
+	host = 'smtp.189.cn'
+	port = 25
 	isTls = False
-	smtp = 'smtp.189.cn'
-	port = '25'
-	username = base64.standard_b64encode(usr).decode('utf-8')
-	password = base64.standard_b64encode(pwd).decode('utf-8')
+	usr = base64.standard_b64encode(username.encode()).decode()
+	pwd = base64.standard_b64encode(password.encode()).decode()
 
 	try:
-		svr = smtplib.SMTP(smtp, port)
+		svr = smtplib.SMTP(host, port)
 		#svr.set_debuglevel(1)
 		if isTls:
 			svr.starttls()
 		svr.ehlo_or_helo_if_needed()
 		svr.docmd("AUTH", "LOGIN")
-		svr.docmd(username)
-		svr.docmd(password)
+		svr.docmd(usr)
+		svr.docmd(pwd)
+	except:
+		return None
+	return svr
 
+
+def sendEmail_189(mail, username="hexing20100113@189.cn", password="hexiaoxing"):
+	svr = connSmtp_189(username, password)
+	if None == svr :
+		return False
+
+	fromAddr = mail["From"]
+	toAddr = mail["To"]
+
+	try:
 		svr.sendmail(fromAddr, toAddr, mail.as_string())
 		svr.quit()
 	except:
-		print("Failure to diliver email:" + toAddr)
-		print(sys.exc_info()[0])
+		print("Failure to diliver email:" + toAddr, file=sys.stderr)
+		print(sys.exc_info()[0], file=sys.stderr)
 		return False
 
-	#print('Success to diliver email:' + toAddr)
+	#print('Success to diliver email:' + toAddr, file=sys.stderr)
 	return True
 
 
@@ -137,8 +159,8 @@ def sendMail(mailContent):
 
 	fromAddr = 'hexing20100113@189.cn'
 	mail = buildEMail(toAddr, fromAddr, subject, mailContent)
-	usr = b"hexing20100113@189.cn"
-	pwd = b"hexiaoxing"
+	usr = "hexing20100113@189.cn"
+	pwd = "hexiaoxing"
 	return sendEmail_189(mail, usr, pwd)
 
 
@@ -146,5 +168,17 @@ def sendMail(mailContent):
 if __name__ == '__main__':
 	if (2 == len(sys.argv)):
 		sendMail(sys.argv[1])
+	elif (5 == len(sys.argv)):
+		toAddr = sys.argv[1]
+		subject = sys.argv[2]
+		mailContent = sys.argv[3]
+		attachFiles = sys.argv[4]
+
+		fromAddr = 'hexing.net@gmail.com'
+		mail = buildEMail(toAddr, fromAddr, subject, mailContent, files=[attachFiles])
+		usr = "hexing.net"
+		pwd = "hexinglq"
+		if False == sendEmail_gmail(mail, usr, pwd):
+			exit(1)
 	else:
 		print(len(sys.argv))

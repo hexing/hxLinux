@@ -8,4 +8,4 @@ F_IP='/tmp/myIP.txt'
 if [ -r $F_IP ]; then
 	grep "$MY_IP" "$F_IP" >/dev/null && exit
 fi
-python $HX_BIN/sendmail.py "$MY_IP" && echo $MY_IP > $F_IP
+python $HX_BIN/sendEmail.py "$MY_IP" && echo $MY_IP > $F_IP

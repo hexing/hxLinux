@@ -95,18 +95,24 @@ if (__name__ == '__main__'):
 		while True:
 			sCmd = input('input the command(List/Read/Delete/Quit):')
 
-			if 'List'==sCmd or 'L'==sCmd:
+			if 'L'==sCmd or 'List'==sCmd :
 				printSubjectList(p)
 			elif 'Quit'==sCmd or 'Q'==sCmd or ''==sCmd:
 				break
 			else:
-				mh = re.search('(?<=^R|^D)\d+$', sCmd)
+				mh = re.search('(?<=^R)\d+$', sCmd)
 				if None != mh:
 					n = int(mh.group(0))
-					if 'R'==sCmd[0]:
-						print(getEmailContent(p, n))
-					elif 'D'==sCmd[0]:
-						p.dele(n)
+					print(getEmailContent(p, n))
+			mh = re.search('(?<=^D)(\d+)(,\d+)*$', sCmd)
+			if None != mh:
+				lst = re.findall('(?<=^D|,)\d+', sCmd)
+				if None != lst :
+					print(lst)
+					yes = input("Would you like to delete?(Yes/No):")
+					if 'Y'==yes or 'Yes'==yes:
+						for n in lst:
+							p.dele(n)
 
 		p.quit()
 	else:

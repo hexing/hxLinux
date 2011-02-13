@@ -1,4 +1,19 @@
 #improve bash history search for Up/Down
 #"\e[A":history-search-backward
 #"\e[B":history-search-forward
-#set show-all-if-ambiguous on
+
+set show-all-if-ambiguous on
+
+#bind -v
+set bell-style visible
+#set visible-stats on
+
+#bind -p
+#set convert-meta on
+#"\M-j": menu-complete
+#"\M-k": menu-complete-backward
+
+"\ep": menu-complete
+"\en": menu-complete-backward
+
+#"\ek": copy-region-as-kill
