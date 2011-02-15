@@ -6,17 +6,13 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 import email.utils
 from email.header import Header
-import smtplib
-import datetime
-import locale
-import os
-import sys
-import base64
+import smtplib, base64
+import os, sys, datetime, locale, re
  
 
 
 def buildEMail(toAddr, fromAddr, subject, mailContent,
-		encode="utf-8", type="plain", files=None):
+		encode="utf-8", type="plain", attaches=None):
 	mail = MIMEMultipart()
 	#mail['To'] = ','.join(toAddr)
 	mail['To'] = toAddr
@@ -27,8 +23,8 @@ def buildEMail(toAddr, fromAddr, subject, mailContent,
 	body = MIMEText(mailContent, type, encode)
 	mail.attach(body)
 
-	if (None != files):
-		if (False == addAttachments(mail, files)):
+	if (None != attaches):
+		if (False == addAttachments(mail, attaches)):
 			return None
 	
 	return mail
@@ -142,43 +138,52 @@ def sendEmail_189(mail, username="hexing20100113@189.cn", password="hexiaoxing")
 	return True
 
 
-def sendMail(mailContent):
-	toAddr = '18939771309@189.cn'
-	subject = 'My Address IP'
+def sendMail(toAddr, subject, mailContent,
+		fromAddr = 'hexing20100113@189.cn', usr = "18939771309@189.cn", pwd = "hexiaoxing", attaches=None):
+	mail = buildEMail(toAddr, fromAddr, subject, mailContent, attaches=attaches)
+	mh = re.search('\@189\.cn$', fromAddr)
+	if None != mh :
+		Err = sendEmail_189(mail, usr, pwd)
+	else:
+		Err = sendEmail_gmail(mail, usr, pwd)
 
-	#fromAddr = 'hexing.net@gmail.com'
-	#mail = buildEMail(toAddr, fromAddr, subject, mailContent)
-	##toAddr = "hexing.job@gmail.com"
-	##subject = "工资单 20101111"
-	##fromAddr = 'hexing.net@gmail.com'
-	##files = ["./何幸.7z"]
-	##mail = buildEMail(toAddr, fromAddr, subject, mailContent, files=files)
-	#usr = "hexing.net"
-	#pwd = "hexinglq"
-	#return sendEmail_gmail(mail, usr, pwd)
-
-	fromAddr = 'hexing20100113@189.cn'
-	mail = buildEMail(toAddr, fromAddr, subject, mailContent)
-	usr = "hexing20100113@189.cn"
-	pwd = "hexiaoxing"
-	return sendEmail_189(mail, usr, pwd)
+	return Err
 
 
 
 if __name__ == '__main__':
 	if (2 == len(sys.argv)):
-		sendMail(sys.argv[1])
-	elif (5 == len(sys.argv)):
+		toAddr = '18939771309@189.cn'
+		subject = 'My Address IP'
+		mailContent = sys.argv[1]
+		fromAddr = 'hexing20100113@189.cn'
+		usr = 'hexing20100113@189.cn'
+		pwd = "hexiaoxing"
+
+		if False == sendMail(toAddr, subject, mailContent, fromAddr, usr, pwd):
+			exit(99)
+	elif (7 == len(sys.argv)):
 		toAddr = sys.argv[1]
 		subject = sys.argv[2]
 		mailContent = sys.argv[3]
-		attachFiles = sys.argv[4]
+		fromAddr = sys.argv[4]
+		usr = sys.argv[5]
+		pwd = sys.argv[6]
 
-		fromAddr = 'hexing.net@gmail.com'
-		mail = buildEMail(toAddr, fromAddr, subject, mailContent, files=[attachFiles])
-		usr = "hexing.net"
-		pwd = "hexinglq"
-		if False == sendEmail_gmail(mail, usr, pwd):
-			exit(1)
+		if False == sendMail(toAddr, subject, mailContent, fromAddr, usr, pwd):
+			exit(99)
+	elif (8 == len(sys.argv)):
+		toAddr = sys.argv[1]
+		subject = sys.argv[2]
+		mailContent = sys.argv[3]
+		fromAddr = sys.argv[4]
+		usr = sys.argv[5]
+		pwd = sys.argv[6]
+		attaches = []
+		attaches.append(sys.argv[7])
+
+		if False == sendMail(toAddr, subject, mailContent, fromAddr, usr, pwd, attaches):
+			exit(98)
 	else:
-		print(len(sys.argv))
+		print('Error parameters!', file=sys.stderr)
+		exit(7)

@@ -5,7 +5,7 @@
 set show-all-if-ambiguous on
 
 #bind -v
-set bell-style visible
+#set bell-style visible
 #set visible-stats on
 
 #bind -p
