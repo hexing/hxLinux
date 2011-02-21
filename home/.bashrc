@@ -23,7 +23,7 @@ alias find_bin='find /{bin,sbin}/ /usr/{bin,sbin,local/{bin,sbin}}/'
 alias find_lib='find /lib/ /usr/{lib,local/lib}/'
 alias find_pkg='find /var/cache/pacman/pkg/'
 
-export HXUTL=/opt/hxLinux/script/utility
+HXUTL=/opt/hxLinux/script/utility
 HX_SBIN=$HXUTL
 alias shutdown="sh $HX_SBIN/shutdown.sh -h +0"
 alias reboot="sh $HX_SBIN/reboot.sh"

@@ -59,8 +59,8 @@ def sendJobEmail(jei, content, svr_stmp):
 
 if __name__=='__main__':
 	arr = [
-			#JobEmailInfo('hexing.job@gmail.com, 18939771309@189.cn', '何幸的简历', '谢谢你\n\n\n'),
-			JobEmailInfo('18939771309@189.cn, hexing.job@gmail.com', '何幸的简历', '谢谢你\n\n\n'),
+			JobEmailInfo('hexing.job@gmail.com, 18939771309@189.cn', '何幸的简历', '谢谢你\n\n\n'),
+			#JobEmailInfo('18939771309@189.cn, hexing.job@gmail.com', '何幸的简历', '谢谢你\n\n\n'),
 			#JobEmailInfo('18939771309@189.cn', '何幸的简历01', '谢谢你\n\n\n'),
 			#JobEmailInfo('hexing.job@gmail.com', '何幸的简历03', HEADER_INFO),
 			]
