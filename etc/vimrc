@@ -120,7 +120,7 @@ endif
 		let g:Tlist_Sort_Type = 'name'
 		let g:Tlist_File_Fold_Auto_Close = 1
 		if has("win32")
-			let g:Tlist_Ctags_Cmd = $VIM . '/vimfiles/bin/ctags.exe'
+			let g:Tlist_Ctags_Cmd = $VIMRUNTIME . '/ctags.exe'
 		endif
 
 	"matchparen.vim {{{2
@@ -131,7 +131,7 @@ endif
 
 	"hexing_autoload.vim
 	if has("win32")
-		let g:Ctags = $VIM . '/vimfiles/bin/ctags.exe'
+		let g:Ctags = $VIMRUNTIME . '/ctags.exe'
 		let g:TagDirectory = 'b:/tags'
 		call hexing#hexing_autoload#HX_LoadTagFiles(g:TagDirectory . '/*.tag')
 	endif

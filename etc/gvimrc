@@ -1,4 +1,4 @@
-﻿set showtabline=0	"始终显示标签页
+﻿set showtabline=1	"始终显示标签页
 set guioptions-=m
 "set guitablabel=%{tabpagenr()}.%t\ %m	"每个tab上显示编号
 
