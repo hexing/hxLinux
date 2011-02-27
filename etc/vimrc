@@ -1,73 +1,70 @@
-﻿"hexing's vim script
-"source $VIM/hexing_gvim.vim
-
-"ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f tag01 E:\develop\Core_Libs
+﻿"ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f tag01 E:\develop\Core_Libs
 
 runtime! archlinux.vim
 
-"term settings {{{1
+"settings {{{1
+	"default settings:
+		"set selectmode= textwidth=0 showbreak=
+		"set noundofile noinfercase nolist norelativenumber noshiftround noshowmatch nosmarttab
+		"set joinspaces ttyfast tagbsearch wrapscan
+	"filetype settings:cindent cinkeys showfulltag
+	"unsure settings:dictionary include includeexpr updatecount updatetime viewdir maxmem maxmempattern maxmemtot menuitems mkspellmen
+
 	syntax enable
 	syntax on
 	filetype plugin indent on
 
-	set number ruler showcmd showmode more
-	set nospell nocompatible
-	set incsearch hlsearch ignorecase
-	set shortmess=oOtTI "启动的时候不显示那个援助索马里儿童的提示
-	set switchbuf=usetab
-	"set showmatch "显示匹配括号
-	"let mapleader=","
-	"set noautoread mouse=a cursorline wildmenu lz hid magic showmatch noerrorbells novisualbell t_vb= splitright
-	"set so=7 cmdheight=2 mat=4
-
+	set number more
 	set nowrap whichwrap=b,s "不自动换行，只有<BS><SPACE>可以在行间回绕
-	set scrolloff=0	scroll=0 sidescroll=1 sidescrolloff=0
-	set textwidth=0 shiftwidth=4 tabstop=4 softtabstop=4
-	set formatoptions+=mM
-	set smartindent autoindent
-	"set autoread
-	"set cdpath path
-	set completeopt=menuone
-	set wildmode=full wildmenu wildchar=<Tab>
-	set foldenable foldmethod=marker "foldnestmax=7 foldclose=all foldopen=all
-	set diffopt+=vertical switchbuf=split
-	set matchpairs+=<:>
-
+	set smartindent autoindent copyindent
+	"set magic cursorline hidden lazyredraw splitright confirm
+	set nofsync nospell nocompatible noruler noshowcmd noshowmode swapsync=sync
+	set noincsearch hlsearch ignorecase
+	"set noautoread noerrorbells novisualbell t_vb=
+	set shortmess=aoOtTI "启动的时候不显示那个援助索马里儿童的提示
 	set viminfo= "退出时不保存信息
-	"set bufhidden=
-	set nobomb	"设置字节顺序 只有写入的时候才会有效，现在设置是无效的
+	set switchbuf=usetab,newtab
+	set backspace=indent,eol,start
+	set isfname+=32 "让gf也能查找包含space的文件名
+	set completeopt=menuone selection=inclusive
 	set history=9 undolevels=36 maxfuncdepth=97
-	set selection=exclusive "inclusive
-
+	set wildmenu "wildmode=full wildchar=<Tab>
+	set diffopt+=vertical matchpairs+=<:> helplang=cn formatoptions+=mM
+	"set fileencoding=utf-8
+	set fileencodings=usc-bom,utf-8,chinese ",euc-jp,gb18030,gbk,gb2312,cp936
+	set ambiwidth=double
+	"set encoding=utf-8
+	"let &termencoding=&encoding
 	set nobackup nowritebackup updatecount=0 backupdir=	"关闭备份功能
 	set noswapfile	"可在编辑过程中禁止使用交换文件
+	set scrolloff=1	sidescroll=3 sidescrolloff=7
+	set shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
+	set nobomb	"设置字节顺序 只有写入的时候才会有效，现在设置是无效的
 
-	"文字编码加入utf8
-	" 设定默认解码
-	"set fenc=utf-8
-	set fencs=usc-bom,utf-8,chinese ",euc-jp,gb18030,gbk,gb2312,cp936
-	"set enc=utf-8
-	"let &termencoding=&encoding
-	set ambiwidth=double
-	 
-	"设置语法折叠
-	"set foldmethod=syntax
-	"设置折叠区域的宽度
-	"set foldcolumn=3 
-	"设置为自动关闭折叠
-	"set foldclose=all 
-	 
+	"set cmdheight=2 matchtime=7 mouse=a
+	"let mapleader="," maplocalleader="\"
+
 	" 用空格键来开关折叠
 	"set foldenable
 	"nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-	 
-	"设置帮助语言
-	"if version >= 603
-	"  set helplang=cn
-	"  set encoding=utf-8
+	"set foldmethod=syntax "设置语法折叠
+	"set foldcolumn=3 "设置折叠区域的宽度
+	"set foldclose=all foldopen=all "设置为自动关闭/打开折叠
+	set foldenable foldmethod=marker "foldnestmax=7
+
+	"if has('multi_byte')
+	"	set nodelcombine
+	"endif
+	"if has('windows')
+	"	set showtabline=1
 	"endif
 
-	if has("win32")
+	if v:version>=703
+		set cryptmethod=blowfish
+		set concealcursor=nc conceallevel=1
+	endif
+
+	if has('win32')
 		if executable('mingw32-make.exe')
 			set makeprg=mingw32-make.exe
 		endif
@@ -76,50 +73,52 @@ runtime! archlinux.vim
 	else
 		set	directory=/tmp/ "将所有.swp发入指定目录
 		set fileformat=unix
+		set noshelltemp 
 	endif
 
-	"if executable('grep')
-	"	set grepprg=grep\ -nHubE
+	if !has('gui_running')
+		set t_Co=256
+		if &term == 'linux'
+			"控制台光标设置为块状
+			set  t_ve+=[?6c
+			"autocmd! InsertEnter * set  t_ve-=[?6c
+			"autocmd! InsertLeave * set  t_ve+=[?6c
+			"autocmd! VimLeave * set  t_ve-=[?6c
+		endif
+		if &term =~ 'xterm'
+			"	set term=ansi "避免nnoremap <Esc> 的bug
+			"恢复xterm的屏幕
+			set t_ti=7[r[?47h t_te=[?47l8
+			"set t_ti=[?1049h t_te=[?1049l
+			"let &t_ti="\<Esc>[?1049h" | let &t_te="\<Esc>[?1049l"
+			if has('cursorshape') "改变cursor的颜色
+				let &t_SI="\<Esc>]12;burlywood1\x7" | let &t_EI="\<Esc>]12;green3\x7"
+			endif
+		endif
+	endif
+
+	set laststatus=2 highlight+=srb
+	let &statusline='%f %m%r    [%{&ft}|%{&fenc}|%{&ff}]   %{g:colors_name}'
+
+	
+	"if has('win32')
+	"	set tags+=E:/develop/tags/tags_core_libs
+	"	set tags+=E:/develop/tags/tags_wxWidgets_include
+	"	set tags+=E:/develop/tags/tags_wxWidgets_msw 
 	"endif
-	"grep -nHubE -d skip -e
-
-	"find -type f -name "*.vim" -maxdepth 1
-	set isfname+=32 "让gf也能查找包含space的文件名
-
-	"set tags+=E:/develop/tags/tags_core_libs
-	"set tags+=E:/develop/tags/tags_wxWidgets_include
-	"set tags+=E:/develop/tags/tags_wxWidgets_msw 
 
 	"set iskeyword+=.	"把.也认为是word的一个合法字符
 
 	"scriptnames	"列出所有加载的 plugins, _vimrcs
 	"verbose set history	"显示history的值并指出设置文件的位置
 
-if has("gui_running")
-	set winaltkeys=no tabpagemax=96
-
-	"set title titlestring=千里暮云平
-	"set title titlestring=%<%F%=%l/%L-%P titlelen=70
-	set title titlestring=千里暮云平\ %t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
-	"set title titlestring=%<%F%=%l/%L-%P titlelen=70
-	"set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
-	"set title titlestring=山横春烟\ %t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
-endif
-
-" Nice window title
-if has('title') && (has('gui_running') || &title)
-set titlestring=
-set titlestring+=%f\ " file name
-set titlestring+=%h%m%r%w " flag
-set titlestring+=\ -\ %{v:progname} " program name
-endif
 "plugin settings {{{1
 	"taglist.vim {{{2
 		let g:Tlist_Exit_OnlyWindow = 1
 		let g:Tlist_Show_One_File = 1
 		let g:Tlist_Sort_Type = 'name'
 		let g:Tlist_File_Fold_Auto_Close = 1
-		if has("win32")
+		if has('win32')
 			let g:Tlist_Ctags_Cmd = $VIMRUNTIME . '/ctags.exe'
 		endif
 
@@ -130,25 +129,21 @@ endif
 		let g:autoclose_on = 1
 
 	"hexing_autoload.vim
-	if has("win32")
+	if has('win32')
 		let g:Ctags = $VIMRUNTIME . '/ctags.exe'
 		let g:TagDirectory = 'b:/tags'
 		call hexing#hexing_autoload#HX_LoadTagFiles(g:TagDirectory . '/*.tag')
 	endif
 
 "autocmd {{{1
-		if has('autochdir')
-			set autochdir "autocmd BufEnter * exec "cd %:p:h"
-		endif
-		"autocmd BufEnter * let &titlestring = hostname() . "/" . expand("%:p")
+		"if has('autochdir')
+		"	set autochdir
+		"else
+		"	autocmd BufEnter * exec "cd %:p:h"
+		"endif
 		autocmd BufReadPre * call hexing#hexing_autoload#HX_OnOpenFile()
 		au BufRead,BufNewFile *.h++	set filetype=cpp
 		au BufRead,BufNewFile *.c++	set filetype=cpp
-		if has("gui_running")
-			let g:colors_name=''
-			autocmd ColorScheme * let &titlestring=&titlestring.'|'.g:colors_name
-		endif
-		
 
 "maps {{{1 
 	"normal mode {{{2
@@ -156,7 +151,7 @@ endif
 		nnoremap <silent> <S-Tab> :call hexing#hexing_autoload#HX_switch_showtabline()<CR>
 		nnoremap / :nohlsearch<CR>/
 		nnoremap ? :nohlsearch<CR>?
-		nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
+		"nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 		nnoremap Y y$
 		nnoremap <Home> ^
 		"nnoremap <Home> 1_
@@ -208,58 +203,7 @@ endif
 	command! -range Align : call hexing#hexing_autoload#HX_align_word_column(<line1>, <line2>)
 "}}}1
 
-	if !has("gui_running")
-		if &term =~ 'xterm'
-			set term=ansi "避免nnoremap <Esc> 的bug
-		endif
-		set t_Co=256
-	endif
-	colorscheme	random "source $VIMRUNTIME/colors/春山眉wuye.vim
-	if &diff
-		call hexing#hexing_autoload#HX_diff_colorscheme()
-	endif
-
-"Format the statusline
-" Nice statusbar
-set laststatus=2
-set statusline=
-set statusline+=%2*%-3.3n%0*\ " buffer number
-set statusline+=%f\ " file name
-set statusline+=%h%1*%m%r%w%0* " flag
-set statusline+=[
-if v:version >= 600
-set statusline+=%{strlen(&ft)?&ft:'none'}, " filetype
-set statusline+=%{&encoding}, " encoding
-endif
-set statusline+=%{&fileformat}] " file format
-if filereadable(expand("$VIM/vimfiles/plugin/vimbuddy.vim"))
-set statusline+=\ %{VimBuddy()} " vim buddy
-endif
-set statusline+=%= " right align
-set statusline+=%2*0x%-8B\ " current char
-set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
-
-" special statusbar for special window
-if has("autocmd")
-au FileType qf
-\ if &buftype == "quickfix" |
-\ setlocal statusline=%2*%-3.3n%0* |
-\ setlocal statusline+=\ \[Compiler\ Messages\] |
-\ setlocal statusline+=%=%2*\ %<%P |
-\ endif
-
-fun! FixMiniBufExplorerTitle()
-if "-MiniBufExplorer-" == bufname("%")
-setlocal statusline=%2*%-3.3n%0*
-setlocal statusline+=\[Buffers\]
-setlocal statusline+=%=%2*\ %<%P
-endif
-endfun
-
-if v:version>=600
-au BufWinEnter *
-\ let oldwinnr=winnr() |
-\ windo call FixMiniBufExplorerTitle() |
-\ exec oldwinnr . " wincmd w"
-endif
+colorscheme	random
+if &diff
+	call hexing#hexing_autoload#HX_diff_colorscheme()
 endif

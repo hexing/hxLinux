@@ -11,8 +11,8 @@
 
 #dig www.baidu.com #查询DNS的时间
 
-find /etc/ -type f -iname '*pacnew' -or -name '*~'
-find /opt/hxLinux -type f -name '*~'
+find /etc/ -type f -iname '*pacnew' -or -name '*~' -or -iname '*.bak'
+find /opt/hxLinux -type f -name '*~' #-or -iname '*.bak'
 
 
 lsmod | grep '[i]pv6'
@@ -21,9 +21,9 @@ lsmod | grep '[i]pv6'
 NEED_PKG=(
 aufs2 squashfs-tools
 pdnsd #varnish
-p7zip sqlite3
+p7zip sqlite3 wget aria2
 #openbox lxde pekwm icewm dwm jwm pwm compiz Tint2
-gpicview feh #gpicview viewnior
+gpicview feh viewnior #gpicview
 )
 for i in ${NEED_PKG[@]}; do
 	pacman -Q $i 1>/dev/null
@@ -31,7 +31,7 @@ done
 
 
 INGNORE_PKG=(
-xterm xorg-twm avahi
+xterm xorg-twm avahi epiphany
 lvm2 vbetool
 )
 for i in ${INGNORE_PKG[@]}; do
