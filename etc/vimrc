@@ -1,4 +1,4 @@
-﻿"ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f tag01 E:\develop\Core_Libs
+﻿"ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f tag-5 E:\develop\Core_Libs
 
 runtime! archlinux.vim
 
@@ -12,10 +12,10 @@ runtime! archlinux.vim
 
 	syntax enable
 	syntax on
-	filetype plugin indent on
+	filetype on
 
 	set number more
-	set nowrap whichwrap=b,s "不自动换行，只有<BS><SPACE>可以在行间回绕
+	set wrap whichwrap=b,s "只有<BS><SPACE>可以在行间回绕
 	set smartindent autoindent copyindent
 	"set magic cursorline hidden lazyredraw splitright confirm
 	set nofsync nospell nocompatible noruler noshowcmd noshowmode swapsync=sync
@@ -145,64 +145,62 @@ runtime! archlinux.vim
 		au BufRead,BufNewFile *.h++	set filetype=cpp
 		au BufRead,BufNewFile *.c++	set filetype=cpp
 
+"command {{{1
+	command! -range Align : call hexing#hexing_autoload#HX_align_word_column(<line1>, <line2>)
+
 "maps {{{1 
 	"normal mode {{{2
 		"nnoremap <F1> :call hexing#hexing_autoload#HX_debug_test()<CR>
-		nnoremap <silent> <S-Tab> :call hexing#hexing_autoload#HX_switch_showtabline()<CR>
-		nnoremap / :nohlsearch<CR>/
-		nnoremap ? :nohlsearch<CR>?
+		"nnoremap <silent> <S-Tab> :call hexing#hexing_autoload#HX_switch_showtabline()<CR>
+		"nnoremap / :nohlsearch<CR>/
+		"nnoremap ? :nohlsearch<CR>?
 		"nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
-		nnoremap Y y$
-		nnoremap <Home> ^
+		"nnoremap Y y$
+		"nnoremap <Home> ^
 		"nnoremap <Home> 1_
-		"nnoremap 0 ^
-		nnoremap <silent> <kPlus> :set foldlevel-=1<CR>
-		nnoremap <silent> <kMinus> :set foldlevel+=1<CR>
-		nnoremap <C-F4> :call hexing#hexing_autoload#HX_close_buffer()<CR>
-		nnoremap <silent> <F6> :call  hexing#hexing_autoload#HX_toggle_quickfix_wnd()<CR>
-		nnoremap <silent> <C-F12> :call hexing#hexing_autoload#HX_CreateTagFile()<CR>
-		nnoremap <silent> <A-F12> :call hexing#hexing_autoload#HX_LoadTagFiles('')<CR>
+		"nnoremap <silent> <kPlus> :set foldlevel-=1<CR>
+		"nnoremap <silent> <kMinus> :set foldlevel+=1<CR>
+		"nnoremap <C-F4> :call hexing#hexing_autoload#HX_close_buffer()<CR>
+		"nnoremap <silent> <F6> :call  hexing#hexing_autoload#HX_toggle_quickfix_wnd()<CR>
+		"nnoremap <silent> <C-F12> :call hexing#hexing_autoload#HX_CreateTagFile()<CR>
+		"nnoremap <silent> <A-F12> :call hexing#hexing_autoload#HX_LoadTagFiles('')<CR>
 
 	"insert mode {{{2
-		inoremap <CR> <C-R>=pumvisible() ? "\<lt>C-Y>" : "\<lt>CR>"<CR>
-		inoremap <expr> <Esc> pumvisible() ? "\<C-E>" : "\<Esc>"
-		imap <C-CR> <End><CR>
-		inoremap <S-CR> <C-O>O
-		inoremap <Home> <C-O>^
-		inoremap <silent> <C-S> <C-O>:update<CR>
+		"inoremap <CR> <C-R>=pumvisible() ? "\<lt>C-Y>" : "\<lt>CR>"<CR> inoremap <expr> <Esc> pumvisible() ? "\<C-E>" : "\<Esc>"
+		"imap <C-CR> <End><CR>
+		"inoremap <S-CR> <C-O>O
+		"inoremap <Home> <C-O>^
+		"inoremap <silent> <C-S> <C-O>:update<CR>
 
-		inoremap <A-o> <C-X><C-O>
-		inoremap <A-u> <C-X><C-U>
-		inoremap <A-p> <C-X><C-P>
-		inoremap <A-n> <C-X><C-N>
-		inoremap <A-l> <C-X><C-L>
-		inoremap <A-k> <C-X><C-K>
-		inoremap <A-v> <C-X><C-V>
+		"inoremap <A-o> <C-X><C-O>
+		"inoremap <A-u> <C-X><C-U>
+		"inoremap <A-p> <C-X><C-P>
+		"inoremap <A-n> <C-X><C-N>
+		"inoremap <A-l> <C-X><C-L>
+		"inoremap <A-k> <C-X><C-K>
+		"inoremap <A-v> <C-X><C-V>
 
-		inoremap [ <C-R>=hexing#hexing_autoload#HX_pair('[')<CR>
-		inoremap ] <C-R>=hexing#hexing_autoload#HX_pair(']')<CR>
-		inoremap ( <C-R>=hexing#hexing_autoload#HX_pair('(')<CR>
-		inoremap ) <C-R>=hexing#hexing_autoload#HX_pair(')')<CR>
-		inoremap } <C-R>=hexing#hexing_autoload#HX_pair('}')<CR>
-		inoremap ' <C-R>=hexing#hexing_autoload#HX_pair("'")<CR>
+		"inoremap [ <C-R>=hexing#hexing_autoload#HX_pair('[')<CR>
+		"inoremap ] <C-R>=hexing#hexing_autoload#HX_pair(']')<CR>
+		"inoremap ( <C-R>=hexing#hexing_autoload#HX_pair('(')<CR>
+		"inoremap ) <C-R>=hexing#hexing_autoload#HX_pair(')')<CR>
+		"inoremap } <C-R>=hexing#hexing_autoload#HX_pair('}')<CR>
+		"inoremap ' <C-R>=hexing#hexing_autoload#HX_pair("'")<CR>
 
 	"visual mode {{{2
-		vnoremap <silent> <A-F8> :call hexing#hexing_autoload#HX_align_lines()<CR>
+		"vnoremap <silent> <A-F8> :call hexing#hexing_autoload#HX_align_lines()<CR>
 
-		vnoremap <silent> [ :call hexing#hexing_autoload#HX_make_paire('[')<CR>
-		vnoremap <silent> ( :call hexing#hexing_autoload#HX_make_paire('(')<CR>
-		vnoremap <silent> { :call hexing#hexing_autoload#HX_make_paire('{')<CR>
-		vnoremap <silent> ' :call hexing#hexing_autoload#HX_make_paire("'")<CR>
+		"vnoremap <silent> [ :call hexing#hexing_autoload#HX_make_paire('[')<CR>
+		"vnoremap <silent> ( :call hexing#hexing_autoload#HX_make_paire('(')<CR>
+		"vnoremap <silent> { :call hexing#hexing_autoload#HX_make_paire('{')<CR>
+		"vnoremap <silent> ' :call hexing#hexing_autoload#HX_make_paire("'")<CR>
 		"vnoremap <silent> " :call hexing#hexing_autoload#HX_make_paire('"')<CR>
 
-	"map
-		map <kPoint> G
+	"Emacs maps {{{2
+		nnoremap <C-x>s :update<CR>
+		nnoremap <C-x><C-s> :update<CR>
 
-
-"command {{{1
-	command! -range Align : call hexing#hexing_autoload#HX_align_word_column(<line1>, <line2>)
-"}}}1
-
+"addition {{{1
 colorscheme	random
 if &diff
 	call hexing#hexing_autoload#HX_diff_colorscheme()
