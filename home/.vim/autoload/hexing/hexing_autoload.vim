@@ -500,7 +500,7 @@ function! hexing#hexing_autoload#HX_align_word_column(ln_beg, ln_end) "{{{3
 			let l:ss = strpart(l:ss, 0, col("'<")-1) . l:left . strpart(l:ss, col("'<")-1)
 			call setline(a:firstline, l:ss)
 			let l:st = getline(a:lastline)
-			let l:st = strpart(l:st, 0, col("'>")) . l:right . strpart(l:st, col("'>"))
+			let l:st = strpart(l:st, 0, col("'>")+1) . l:right . strpart(l:st, col("'>")+1)
 			call setline(a:lastline, l:st)
 		elseif char2nr('V') == char2nr(l:vm)
 			let l:ss = getline(a:firstline)

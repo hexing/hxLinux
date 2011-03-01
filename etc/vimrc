@@ -1,6 +1,6 @@
 ﻿"ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f tag-5 E:\develop\Core_Libs
 
-runtime! archlinux.vim
+"runtime! archlinux.vim
 
 "settings {{{1
 	"default settings:
@@ -12,10 +12,10 @@ runtime! archlinux.vim
 
 	syntax enable
 	syntax on
-	filetype on
+	filetype plugin indent on
 
-	set number more
-	set wrap whichwrap=b,s "只有<BS><SPACE>可以在行间回绕
+	set number more tildeop
+	set nowrap whichwrap=b,s "只有<BS><SPACE>可以在行间回绕
 	set smartindent autoindent copyindent
 	"set magic cursorline hidden lazyredraw splitright confirm
 	set nofsync nospell nocompatible noruler noshowcmd noshowmode swapsync=sync
@@ -64,48 +64,33 @@ runtime! archlinux.vim
 		set concealcursor=nc conceallevel=1
 	endif
 
-	if has('win32')
-		if executable('mingw32-make.exe')
-			set makeprg=mingw32-make.exe
-		endif
-		set	directory=b:/temp/ "将所有.swp发入指定目录
-		set fileformat=dos
-	else
-		set	directory=/tmp/ "将所有.swp发入指定目录
-		set fileformat=unix
-		set noshelltemp 
-	endif
+	set	directory=/tmp/ "将所有.swp发入指定目录
+	set fileformat=unix
+	set noshelltemp 
 
 	if !has('gui_running')
 		set t_Co=256
-		if &term == 'linux'
-			"控制台光标设置为块状
-			set  t_ve+=[?6c
-			"autocmd! InsertEnter * set  t_ve-=[?6c
-			"autocmd! InsertLeave * set  t_ve+=[?6c
-			"autocmd! VimLeave * set  t_ve-=[?6c
-		endif
-		if &term =~ 'xterm'
-			"	set term=ansi "避免nnoremap <Esc> 的bug
-			"恢复xterm的屏幕
-			set t_ti=7[r[?47h t_te=[?47l8
-			"set t_ti=[?1049h t_te=[?1049l
-			"let &t_ti="\<Esc>[?1049h" | let &t_te="\<Esc>[?1049l"
-			if has('cursorshape') "改变cursor的颜色
-				let &t_SI="\<Esc>]12;burlywood1\x7" | let &t_EI="\<Esc>]12;green3\x7"
-			endif
-		endif
+		"if &term == 'linux'
+		"	"控制台光标设置为块状
+		"	set  t_ve+=[?6c
+		"	"autocmd! InsertEnter * set  t_ve-=[?6c
+		"	"autocmd! InsertLeave * set  t_ve+=[?6c
+		"	"autocmd! VimLeave * set  t_ve-=[?6c
+		"endif
+		"if &term =~ 'xterm'
+		"	"set term=ansi "避免nnoremap <Esc> 的bug
+		"	"恢复xterm的屏幕
+		"	set t_ti=7[r[?47h t_te=[?47l8
+		"	"set t_ti=[?1049h t_te=[?1049l
+		"	"let &t_ti="\<Esc>[?1049h" | let &t_te="\<Esc>[?1049l"
+		"	if has('cursorshape') "改变cursor的颜色
+		"		let &t_SI="\<Esc>]12;burlywood1\x7" | let &t_EI="\<Esc>]12;green3\x7"
+		"	endif
+		"endif
 	endif
 
 	set laststatus=2 highlight+=srb
 	let &statusline='%f %m%r    [%{&ft}|%{&fenc}|%{&ff}]   %{g:colors_name}'
-
-	
-	"if has('win32')
-	"	set tags+=E:/develop/tags/tags_core_libs
-	"	set tags+=E:/develop/tags/tags_wxWidgets_include
-	"	set tags+=E:/develop/tags/tags_wxWidgets_msw 
-	"endif
 
 	"set iskeyword+=.	"把.也认为是word的一个合法字符
 
@@ -119,7 +104,7 @@ runtime! archlinux.vim
 		let g:Tlist_Sort_Type = 'name'
 		let g:Tlist_File_Fold_Auto_Close = 1
 		if has('win32')
-			let g:Tlist_Ctags_Cmd = $VIMRUNTIME . '/ctags.exe'
+			let g:Tlist_Ctags_Cmd = 'F:\cygwin\bin\ctags.exe'
 		endif
 
 	"matchparen.vim {{{2
@@ -127,13 +112,6 @@ runtime! archlinux.vim
 
 	"autoclose.vim {{{2
 		let g:autoclose_on = 1
-
-	"hexing_autoload.vim
-	if has('win32')
-		let g:Ctags = $VIMRUNTIME . '/ctags.exe'
-		let g:TagDirectory = 'b:/tags'
-		call hexing#hexing_autoload#HX_LoadTagFiles(g:TagDirectory . '/*.tag')
-	endif
 
 "autocmd {{{1
 		"if has('autochdir')
@@ -152,8 +130,8 @@ runtime! archlinux.vim
 	"normal mode {{{2
 		"nnoremap <F1> :call hexing#hexing_autoload#HX_debug_test()<CR>
 		"nnoremap <silent> <S-Tab> :call hexing#hexing_autoload#HX_switch_showtabline()<CR>
-		"nnoremap / :nohlsearch<CR>/
-		"nnoremap ? :nohlsearch<CR>?
+		nnoremap / :nohlsearch<CR>/
+		nnoremap ? :nohlsearch<CR>?
 		"nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 		"nnoremap Y y$
 		"nnoremap <Home> ^
@@ -166,19 +144,12 @@ runtime! archlinux.vim
 		"nnoremap <silent> <A-F12> :call hexing#hexing_autoload#HX_LoadTagFiles('')<CR>
 
 	"insert mode {{{2
-		"inoremap <CR> <C-R>=pumvisible() ? "\<lt>C-Y>" : "\<lt>CR>"<CR> inoremap <expr> <Esc> pumvisible() ? "\<C-E>" : "\<Esc>"
+		"inoremap <CR> <C-R>=pumvisible() ? "\<lt>C-Y>" : "\<lt>CR>"<CR>
+		"inoremap <expr> <Esc> pumvisible() ? "\<C-E>" : "\<Esc>"
 		"imap <C-CR> <End><CR>
 		"inoremap <S-CR> <C-O>O
 		"inoremap <Home> <C-O>^
 		"inoremap <silent> <C-S> <C-O>:update<CR>
-
-		"inoremap <A-o> <C-X><C-O>
-		"inoremap <A-u> <C-X><C-U>
-		"inoremap <A-p> <C-X><C-P>
-		"inoremap <A-n> <C-X><C-N>
-		"inoremap <A-l> <C-X><C-L>
-		"inoremap <A-k> <C-X><C-K>
-		"inoremap <A-v> <C-X><C-V>
 
 		"inoremap [ <C-R>=hexing#hexing_autoload#HX_pair('[')<CR>
 		"inoremap ] <C-R>=hexing#hexing_autoload#HX_pair(']')<CR>
@@ -190,15 +161,43 @@ runtime! archlinux.vim
 	"visual mode {{{2
 		"vnoremap <silent> <A-F8> :call hexing#hexing_autoload#HX_align_lines()<CR>
 
-		"vnoremap <silent> [ :call hexing#hexing_autoload#HX_make_paire('[')<CR>
-		"vnoremap <silent> ( :call hexing#hexing_autoload#HX_make_paire('(')<CR>
-		"vnoremap <silent> { :call hexing#hexing_autoload#HX_make_paire('{')<CR>
-		"vnoremap <silent> ' :call hexing#hexing_autoload#HX_make_paire("'")<CR>
-		"vnoremap <silent> " :call hexing#hexing_autoload#HX_make_paire('"')<CR>
+		vnoremap <silent> +[ :call hexing#hexing_autoload#HX_make_paire('[')<CR>
+		vnoremap <silent> +( :call hexing#hexing_autoload#HX_make_paire('(')<CR>
+		vnoremap <silent> +{ :call hexing#hexing_autoload#HX_make_paire('{')<CR>
+		vnoremap <silent> +' :call hexing#hexing_autoload#HX_make_paire("'")<CR>
+		vnoremap <silent> +" :call hexing#hexing_autoload#HX_make_paire('"')<CR>
 
 	"Emacs maps {{{2
+		"nnoremap <C-x><C-s> :update<CR> 有冲突，无效 需要在bash中：stty -ixon
 		nnoremap <C-x>s :update<CR>
-		nnoremap <C-x><C-s> :update<CR>
+		inoremap <C-x>s <C-o>:update<CR>
+		inoremap <C-k> <C-o>d$
+		"inoremap <Home> <C-o>1_
+		inoremap <C-a> <C-o>^
+		inoremap <C-e> <C-o>$
+		"inoremap <C-/> <C-o>u
+		inoremap <C-_> <C-o>u
+		"inoremap <C-x>u <C-o>u
+		inoremap <C-s> <C-o>/
+		inoremap <C-r> <C-o>?
+		inoremap <C-y> <C-o>p
+		if !has('gui_running')
+			inoremap <Esc><Del> <C-w>
+			inoremap <Esc>d <C-o>de
+			inoremap <Esc>y <C-o>P
+			inoremap <Esc>^ <C-o>J
+			inoremap <Esc>gg <C-r>=<SID>GotoLine()<CR>
+			inoremap <Esc>l <C-o>gue
+			inoremap <Esc>u <C-o>gUe
+			inoremap <Esc>c <C-o>~e
+			inoremap <Esc>% <C-o>:s/
+
+			function! s:GotoLine()
+				let n = inputdialog('goto-line:')
+				return "\<C-o>".n.'G'
+			endfunction
+		endif
+
 
 "addition {{{1
 colorscheme	random

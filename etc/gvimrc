@@ -13,11 +13,47 @@ endif
 set title titlestring=千里暮云平\ %t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
 "set title titlestring=山横春烟\ %t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
 
-if has('win32')
+if has('gui_gtk2')
+	set guifont=DejaVu\ Sans\ Mono\ 16
+	set guifontwide=AR\ PL\ UKai\ CN\ 16
+elseif has('win32')
 	autocmd GUIEnter * simalt ~x	"设定windows下gvim 启动时最大化
 	"set guifont=Vera_Sans_YuanTi_Mono:h13.8:w7.6:b,Bitstream\ Vera\ Sans\ Mono:h11.8:w6.7:b,Arial_monospaced_for_SAP:h11.8:w6.7:b
 	set guifont=新宋体:h17:w9
-elseif has('gui_gtk2')
-	set guifont=DejaVu\ Sans\ Mono\ 16
-	set guifontwide=AR\ PL\ UKai\ CN\ 16
+
+	if executable('mingw32-make.exe')
+		set makeprg=mingw32-make.exe
+	endif
+	set	directory=b:/temp/ "将所有.swp发入指定目录
+	set fileformat=dos
+	
+	set tags+=E:/develop/tags/tags_core_libs
+	set tags+=E:/develop/tags/tags_wxWidgets_include
+	set tags+=E:/develop/tags/tags_wxWidgets_msw 
+
+	"hexing_autoload.vim
+	"let g:Ctags = $VIMRUNTIME . '/ctags.exe'
+	let g:Ctags = 'F:\cygwin\bin\ctags.exe'
+	let g:Cscope = 'F:\cygwin\bin\mlcscope.exe'
+	let g:TagDirectory = 'b:/tags'
+	call hexing#hexing_autoload#HX_LoadTagFiles(g:TagDirectory . '/*.tag')
 endif
+
+"Emacs maps {{{2
+	"nnoremap <C-x><C-s> :update<CR> 有冲突，无效 需要在bash中：stty -ixon
+	inoremap <C-/> <C-o>u
+	inoremap <A-Del> <C-w>
+	inoremap <A-d> <C-o>de
+	inoremap <A-y> <C-o>P
+	inoremap <A-^> <C-o>J
+	inoremap <A-g>g <C-r>=<SID>GotoLine()<CR>
+	inoremap <A-y> <C-o>P
+	inoremap <A-l> <C-o>gue
+	inoremap <A-u> <C-o>gUe
+	inoremap <A-c> <C-o>~e
+	inoremap <A-%> <C-o>:s/
+
+	function! s:GotoLine()
+		let n = inputdialog('goto-line:')
+		return "\<C-o>".n.'G'
+	endfunction
