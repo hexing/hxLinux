@@ -13,7 +13,7 @@ set show-all-if-ambiguous on
 #"\M-j": menu-complete
 #"\M-k": menu-complete-backward
 
-"\ep": menu-complete
-"\en": menu-complete-backward
+"\C-p": menu-complete
+"\C-n": menu-complete-backward
 
 #"\ek": copy-region-as-kill

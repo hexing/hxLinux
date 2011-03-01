@@ -14,7 +14,7 @@ gnome-themes-extras
 ARR_YAOURT=(
 )
 
-IGNORE='gnome-terminal|gnome-keyring|gnome-media'
+IGNORE='gnome-terminal|gnome-keyring|gnome-media|epiphany'
 LIST=$(pacman -Sg gnome | grep -Pv "$IGNORE" | grep -Po '\s.+')
 
 ATTACH=
