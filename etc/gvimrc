@@ -40,13 +40,15 @@ elseif has('win32')
 endif
 
 "Emacs maps {{{2
+	vnoremap <M-w> y
+	vnoremap <C-w> d
 	"nnoremap <C-x><C-s> :update<CR> 有冲突，无效 需要在bash中：stty -ixon
 	inoremap <C-/> <C-o>u
 	inoremap <A-Del> <C-w>
 	inoremap <A-d> <C-o>de
 	inoremap <A-y> <C-o>P
 	inoremap <A-^> <C-o>J
-	inoremap <A-g>g <C-r>=<SID>GotoLine()<CR>
+	inoremap <A-g> <C-r>=<SID>GotoLine()<CR>
 	inoremap <A-y> <C-o>P
 	inoremap <A-l> <C-o>gue
 	inoremap <A-u> <C-o>gUe
