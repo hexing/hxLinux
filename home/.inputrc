@@ -6,13 +6,12 @@ set show-all-if-ambiguous on
 
 #bind -v
 #set bell-style visible
-#set visible-stats on
+set visible-stats on
 
 #bind -p
 #set convert-meta on
-#"\M-j": menu-complete
-#"\M-k": menu-complete-backward
 
+#M-1 M-. C-x* M-* pushd popd M-r
 "\C-p": menu-complete
 "\C-n": menu-complete-backward
 

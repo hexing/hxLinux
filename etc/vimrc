@@ -10,10 +10,6 @@
 	"filetype settings:cindent cinkeys showfulltag
 	"unsure settings:dictionary include includeexpr updatecount updatetime viewdir maxmem maxmempattern maxmemtot menuitems mkspellmen
 
-	syntax enable
-	syntax on
-	filetype plugin indent on
-
 	set number more tildeop
 	set nowrap whichwrap=b,s "只有<BS><SPACE>可以在行间回绕
 	set smartindent autoindent copyindent
@@ -90,7 +86,7 @@
 	endif
 
 	set laststatus=2 highlight+=srb
-	let &statusline='%f %m%r    [%{&ft}|%{&fenc}|%{&ff}]   %{g:colors_name}'
+	let &statusline='%f %m%r    [%{&ft}|%{&fenc}|%{&ff}]   %{exists('g:colors_name')?(g:colors_name):None}'
 
 	"set iskeyword+=.	"把.也认为是word的一个合法字符
 
@@ -191,6 +187,7 @@
 			inoremap <Esc>u <C-o>gUe
 			inoremap <Esc>c <C-o>~e
 			inoremap <Esc>% <C-o>:s/
+			inoremap <Esc>r <Esc>cc
 
 			function! s:GotoLine()
 				let n = inputdialog('goto-line:')
@@ -204,3 +201,8 @@ colorscheme	random
 if &diff
 	call hexing#hexing_autoload#HX_diff_colorscheme()
 endif
+
+
+filetype plugin indent on
+syntax enable
+syntax on

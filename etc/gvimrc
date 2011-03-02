@@ -52,6 +52,7 @@ endif
 	inoremap <A-u> <C-o>gUe
 	inoremap <A-c> <C-o>~e
 	inoremap <A-%> <C-o>:s/
+	inoremap <A-r> <Esc>cc
 
 	function! s:GotoLine()
 		let n = inputdialog('goto-line:')
