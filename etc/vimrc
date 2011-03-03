@@ -22,7 +22,7 @@
 	set switchbuf=usetab,newtab
 	set backspace=indent,eol,start
 	set isfname+=32 "让gf也能查找包含space的文件名
-	set completeopt=menuone selection=inclusive
+	set completeopt=menuone selection=old
 	set history=9 undolevels=36 maxfuncdepth=97
 	set wildmenu "wildmode=full wildchar=<Tab>
 	set diffopt+=vertical matchpairs+=<:> helplang=cn formatoptions+=mM
@@ -200,11 +200,8 @@
 
 
 "addition {{{1
-colorscheme	random
-if &diff
-	call hexing#hexing_autoload#HX_diff_colorscheme()
-endif
-
 filetype plugin indent on
 syntax enable
 syntax on
+
+colorscheme	random

@@ -461,23 +461,6 @@ function! hexing#hexing_autoload#HX_align_word_column(ln_beg, ln_end) "{{{3
 		endif
 	endfunction
 
-	function! hexing#hexing_autoload#HX_diff_colorscheme()
-		let noneLst = ['adobe', 'buttercream', 'professional', 'pyte']
-		for i in noneLst
-			if i == g:colors_name
-				if 0 < localtime()%3
-					let lst = ['darkspectrum', 'python', 'sf', 'wuye']
-					let k = len(g:colors_name) % len(lst)
-					exec 'silent! normal :colorscheme ' . lst[k] . "\<CR>"
-					let &titlestring = &titlestring . '|' . lst[k]
-				else
-					colorscheme	hexing_wuye
-					let &titlestring = &titlestring . '|' . 'hexing_wuye'
-				endif
-			endif
-		endfor
-	endfunction
-
 	function! hexing#hexing_autoload#HX_make_paire(cChar) range "{{{3
 		if ('[' == a:cChar || ']' == a:cChar)
 			let l:left = '['

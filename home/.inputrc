@@ -1,18 +1,48 @@
-#improve bash history search for Up/Down
-#"\e[A":history-search-backward
-#"\e[B":history-search-forward
-
-set show-all-if-ambiguous on
-
 #bind -v
 #set bell-style visible
 set visible-stats on
-
+set show-all-if-ambiguous on
 #bind -p
 #set convert-meta on
+
+#improve bash history search for Up/Down
+#"\e[A": history-search-backward
+#"\e[B": history-search-forward
 
 #M-1 M-. C-x* M-* pushd popd M-r
 "\C-p": menu-complete
 "\C-n": menu-complete-backward
+"\e\e[3~": backward-kill-word
+"\C-g": backward-kill-word
+"\M\e[3~": backward-kill-word
+"\M-\e[3~": backward-kill-word
 
-#"\ek": copy-region-as-kill
+#"\e\C-h": backward-kill-word
+#"\C-]": character-search
+#"\e\C-]": character-search-backward
+## copy-backward-word (not bound)
+## copy-forward-word (not bound)
+## copy-region-as-kill (not bound)
+## dabbrev-expand (not bound)
+#"\e[3~": delete-char
+## delete-char-or-list (not bound)
+#"\e\\": delete-horizontal-space
+#"\e\C-i": dynamic-complete-history
+#"\C-x*": glob-expand-word
+## history-search-backward (not bound)
+## history-search-forward (not bound)
+#"\e.": insert-last-argument
+## kill-region (not bound)
+#"\er": revert-line
+#"\C-@": set-mark
+#"\C-t": transpose-chars
+#"\et": transpose-words
+#"\C-_": undo
+## universal-argument (not bound)
+## unix-filename-rubout (not bound)
+#"\C-u": unix-line-discard
+#"\C-w": unix-word-rubout
+#"\eu": upcase-word
+#"\e.": yank-last-arg
+#"\e\C-y": yank-nth-arg
+#"\ey": yank-pop
