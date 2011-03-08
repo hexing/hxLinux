@@ -15,30 +15,30 @@ endif
 		return (v:foldstart - v:foldend) . ' lines foldlevel: ' . v:foldlevel . ' ' . getline(v:foldstart)
 	endfunction
 
-	function! <SID>CColourScheme()
-		let lst = ['hexing_wuye', 'wuye', 'django', 'desert', 'camo', 'slate', 'doriath', 'darkspectrum', 'khaki', 'scite']
-		for i in lst
-			if i == g:colors_name
-				return
-			endif
-		endfor
+	"function! <SID>CColourScheme()
+	"	let lst = ['hexing_wuye', 'wuye', 'django', 'desert', 'camo', 'slate', 'doriath', 'darkspectrum', 'khaki', 'scite']
+	"	for i in lst
+	"		if i == g:colors_name
+	"			return
+	"		endif
+	"	endfor
 
-		if 1 == localtime()%3
-			let k = len(g:colors_name) % len(lst)
-			exec 'silent! normal :colorscheme ' . lst[k] . "\<CR>"
-			let &titlestring = &titlestring . '|' . lst[k]
-		else
-			colorscheme	hexing_wuye
-			let &titlestring = &titlestring . '|' . 'hexing_wuye'
-		endif
-	endfunction
+	"	if 1 == localtime()%3
+	"		let k = len(g:colors_name) % len(lst)
+	"		exec 'silent! normal :colorscheme ' . lst[k] . "\<CR>"
+	"		let &titlestring = &titlestring . '|' . lst[k]
+	"	else
+	"		colorscheme	hexing_wuye
+	"		let &titlestring = &titlestring . '|' . 'hexing_wuye'
+	"	endif
+	"endfunction
 
 if !exists("g:ft_C")
 	let g:ft_C = 1
 	set guioptions-=T guioptions-=r guioptions-=l guioptions+=h guioptions-=m guioptions-=R guioptions-=b guioptions-=L
-	if (!&diff)
-		call <SID>CColourScheme()
-	endif
+	"if (!&diff)
+	"	call <SID>CColourScheme()
+	"endif
 endif
 
 

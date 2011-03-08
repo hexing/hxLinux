@@ -16,8 +16,8 @@ if !exists("*s:LoadRandomColorScheme")
 		let cfl = globpath(fnamemodify(s:self, ":h"), '*.vim')
 		let color_file_list = split(cfl, '\n')
 
-		if has('gui_running')
-			let arr = ['doorhinge','lingodirector']
+		if !has('gui_running')
+			let arr = ['doorhinge','lingodirector','PapayaWhip']
 		else
 			let arr = []
 		endif

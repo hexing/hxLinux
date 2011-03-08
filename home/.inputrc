@@ -14,8 +14,11 @@ set show-all-if-ambiguous on
 "\C-n": menu-complete-backward
 "\e\e[3~": backward-kill-word
 "\C-g": backward-kill-word
-"\M\e[3~": backward-kill-word
-"\M-\e[3~": backward-kill-word
+#"\M\e[3~": backward-kill-word
+#"\M-\e[3~": backward-kill-word
+#Meta-DEL: backward-kill-word
+#M-Rubout: backward-kill-word
+#Meta-Rubout: backward-kill-word
 
 #"\e\C-h": backward-kill-word
 #"\C-]": character-search

@@ -67,18 +67,18 @@
 	if !has('gui_running')
 		set t_Co=256
 		"if &term == 'linux'
-		"	"控制台光标设置为块状
+			"控制台光标设置为块状
 		"	set  t_ve+=[?6c
-		"	"autocmd! InsertEnter * set  t_ve-=[?6c
-		"	"autocmd! InsertLeave * set  t_ve+=[?6c
-		"	"autocmd! VimLeave * set  t_ve-=[?6c
+			"autocmd! InsertEnter * set  t_ve-=[?6c
+			"autocmd! InsertLeave * set  t_ve+=[?6c
+			"autocmd! VimLeave * set  t_ve-=[?6c
 		"endif
 		"if &term =~ 'xterm'
-		"	"set term=ansi "避免nnoremap <Esc> 的bug
-		"	"恢复xterm的屏幕
+			"set term=ansi "避免nnoremap <Esc> 的bug
+			"恢复xterm的屏幕
 		"	set t_ti=7[r[?47h t_te=[?47l8
-		"	"set t_ti=[?1049h t_te=[?1049l
-		"	"let &t_ti="\<Esc>[?1049h" | let &t_te="\<Esc>[?1049l"
+			"set t_ti=[?1049h t_te=[?1049l
+			"let &t_ti="\<Esc>[?1049h" | let &t_te="\<Esc>[?1049l"
 		"	if has('cursorshape') "改变cursor的颜色
 		"		let &t_SI="\<Esc>]12;burlywood1\x7" | let &t_EI="\<Esc>]12;green3\x7"
 		"	endif
@@ -138,8 +138,12 @@
 		"nnoremap <silent> <F6> :call  hexing#hexing_autoload#HX_toggle_quickfix_wnd()<CR>
 		"nnoremap <silent> <C-F12> :call hexing#hexing_autoload#HX_CreateTagFile()<CR>
 		"nnoremap <silent> <A-F12> :call hexing#hexing_autoload#HX_LoadTagFiles('')<CR>
+		nnoremap <C-S-Left> gh<C-o>b
+		nnoremap <C-S-Right> gh<C-o>w
 
 	"insert mode {{{2
+		inoremap <C-S-Left> <C-\><C-o>gh<C-o>b
+		inoremap <C-S-Right> <C-\><C-o>gh<C-o>w
 		"inoremap <CR> <C-R>=pumvisible() ? "\<lt>C-Y>" : "\<lt>CR>"<CR>
 		"inoremap <expr> <Esc> pumvisible() ? "\<C-E>" : "\<Esc>"
 		"imap <C-CR> <End><CR>
@@ -163,41 +167,7 @@
 		vnoremap <silent> +' :call hexing#hexing_autoload#HX_make_paire("'")<CR>
 		vnoremap <silent> +" :call hexing#hexing_autoload#HX_make_paire('"')<CR>
 
-	"Emacs maps {{{2
-		"nnoremap <C-x><C-s> :update<CR> 有冲突，无效 需要在bash中：stty -ixon
-		nnoremap <C-x>s :update<CR>
-		inoremap <C-x>s <C-o>:update<CR>
-		inoremap <C-k> <C-o>d$
-		"inoremap <Home> <C-o>1_
-		inoremap <C-a> <C-o>^
-		inoremap <expr> <C-e> pumvisible()?"\<C-e>":"\<C-o>$"
-		"inoremap <C-/> <C-o>u
-		inoremap <C-_> <C-o>u
-		"inoremap <C-x>u <C-o>u
-		inoremap <C-s> <C-o>/
-		inoremap <C-r> <C-o>?
-		inoremap <expr> <C-y> pumvisible()?"\<C-y>":"\<C-o>p"
-		if !has('gui_running')
-			vnoremap <Esc>w y
-			vnoremap <C-w> x
-			inoremap <Esc><Del> <C-w>
-			inoremap <Esc>d <C-o>de
-			inoremap <Esc>y <C-o>P
-			inoremap <Esc>^ <C-o>J
-			inoremap <Esc>g <C-r>=<SID>GotoLine()<CR>
-			inoremap <Esc>l <C-o>gue
-			inoremap <Esc>u <C-o>gUe
-			inoremap <Esc>c <C-o>~e
-			inoremap <Esc>% <C-o>:s/
-			inoremap <Esc>r <Esc>cc
-			inoremap <C-@> <C-o>v
-
-			function! s:GotoLine()
-				let n = inputdialog('goto-line:')
-				return "\<C-o>".n.'G'
-			endfunction
-		endif
-
+		runtime! autoload/hexing/hxEmacs.vim
 
 "addition {{{1
 filetype plugin indent on

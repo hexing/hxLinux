@@ -268,18 +268,6 @@ function! hexing#hexing_autoload#HX_align_word_column(ln_beg, ln_end) "{{{3
 		exe cmd
 	endfunction
 
-	function!  hexing#hexing_autoload#HX_close_buffer() "{{{3
-		let cmd = 'normal :'
-		let buf_name = bufname('#')
-		if bufexists(buf_name)
-			let cmd = cmd . 'bwipeout'
-		else
-			let cmd = cmd . 'confirm quit'
-		endif
-		let cmd = cmd . "\<CR>"
-		exe cmd
-	endfunction
-
 "keymap functions {{{2
 	function!  hexing#hexing_autoload#HX_pair(ch) "{{{3
 		let sCmd = a:ch

@@ -8,17 +8,24 @@ license=('GPL')
 url="http://www.kernel.org"
 depends=('module-init-tools' 'mkinitcpio')
 provides=(kernel26)
+source=(linux-2.6.37.1.tar.bz2)
+md5sums=('07d3b1868a67c1a7ddcf1d54444cb5d1')
 install=kernel.INSTALL
 
 build() {
+	cd linux* || return 1
+	LOCAL_VERSION='-HeXing_rc3'
+
 	make mrproper
 	zcat /proc/config.gz > .config
 	make oldconfig
 	[ ! -e /sbin/lsmod ] && ln -s /bin/lsmod /sbin/lsmod
 	make localmodconfig
+	sed -i -e "s/CONFIG_LOCALVERSION=\".*\"/CONFIG_LOCALVERSION=\"$LOCAL_VERSION\"/" .config || return 2
 	make menuconfig
 
-	LOCAL_VERSION="$(grep "CONFIG_LOCALVERSION=" $srcdir/.config | sed 's/.*"\(.*\)"/\1/')"
+	LOCAL_VERSION="$(grep "CONFIG_LOCALVERSION=" .config | sed 's/.*"\(.*\)"/\1/')"
+	[ -z $LOCAL_VERSION ] && return 3
 
 	make || return 1
 	mkdir -p $pkgdir/{lib/modules,boot}
