@@ -1,9 +1,9 @@
 "nnoremap <C-x><C-s> :update<CR> 有冲突，无效 需要在bash中：stty -ixon
 nnoremap <C-x>s :update<CR>
-nnoremap <C-x>k :call <SID>CloseCurrentBuffer()<CR>
+nnoremap <silent> <C-x>k :call <SID>CloseCurrentBuffer()<CR>
 
 inoremap <C-x>s <C-o>:update<CR>
-inoremap <C-k> <C-o>d$
+inoremap <silent> <C-k> <C-r>=<SID>KillLine()<CR>
 "inoremap <Home> <C-o>1_
 inoremap <C-a> <C-o>^
 inoremap <expr> <C-e> pumvisible()?"\<C-e>":"\<C-o>$"
@@ -13,6 +13,7 @@ inoremap <C-_> <C-o>u
 inoremap <C-s> <C-o>/
 inoremap <C-r> <C-o>?
 inoremap <expr> <C-y> pumvisible()?"\<C-y>":"\<C-o>p"
+inoremap <C-@> <C-o>v
 
 if has('gui_running')
 	nnoremap <C-x><C-s> :update<CR>
@@ -45,7 +46,6 @@ else
 	inoremap <Esc>c <C-o>~e
 	inoremap <Esc>% <C-o>:s/
 	inoremap <Esc>r <Esc>cc
-	inoremap <C-@> <C-o>v
 endif
 
 function! s:GotoLine()
@@ -63,4 +63,16 @@ function! s:CloseCurrentBuffer()
 	endif
 	let cmd = cmd . "\<CR>"
 	exe cmd
+endfunction
+
+function! s:KillLine()
+	let l = getline('.')
+	let s = strpart(l, col('.'))
+	if empty(s)
+		let s = "\<Del>"
+	else
+		let s = strpart(l, 0, col('.')-1)
+		let s = "\<C-o>:call setline('.','".s."')\<CR>"
+	endif
+	return s
 endfunction

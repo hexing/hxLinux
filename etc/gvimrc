@@ -17,7 +17,7 @@ if has('gui_gtk2')
 	set guifont=DejaVu\ Sans\ Mono\ 16
 	set guifontwide=AR\ PL\ UKai\ CN\ 16
 elseif has('win32')
-	st guioptions+=a clipboard+=unnamed,autoselect
+	set guioptions+=a clipboard+=unnamed,autoselect
 	autocmd GUIEnter * simalt ~x	"设定windows下gvim 启动时最大化
 	"set guifont=Vera_Sans_YuanTi_Mono:h13.8:w7.6:b,Bitstream\ Vera\ Sans\ Mono:h11.8:w6.7:b,Arial_monospaced_for_SAP:h11.8:w6.7:b
 	set guifont=新宋体:h17:w9
