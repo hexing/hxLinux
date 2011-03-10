@@ -1,5 +1,5 @@
 ﻿set showtabline=1 winaltkeys=no tabpagemax=96
-set guioptions+=h guioptions-=TrlmR
+set guioptions+=h guioptions-=T guioptions-=r guioptions-=l guioptions-=m guioptions-=R
 "set guicursor+=
 if !&diff
 	set guioptions-=b guioptions-=L

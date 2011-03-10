@@ -17,7 +17,8 @@ if !exists("*s:LoadRandomColorScheme")
 		let color_file_list = split(cfl, '\n')
 
 		if !has('gui_running')
-			let arr = ['doorhinge','lingodirector','PapayaWhip']
+			let arr = ['doorhinge','lingodirector','PapayaWhip','baycomb',
+						\'industrial','busybee']
 		else
 			let arr = []
 		endif
@@ -48,7 +49,25 @@ if !exists("*s:LoadRandomColorScheme")
 
 		unlet! s:self
 	endfunction
+
+	function! s:LoadFavoriteColorScheme()
+		let arrFavorite = ['hexing_wuye','jellybeans','impact','desert256',
+					\'desertedoceanburnt','lucius','zenburn','herald']
+		let n = localtime() % 7
+		if n > 0
+			return 0
+		endif
+
+		let n = len(arrFavorite)
+		let n = localtime() % n
+		let s = 'colors/'.arrFavorite[n].'.vim'
+		let s = globpath(&runtimepath, s)
+		exec 'source' s
+		return 1
+	endfunction
 endif
 "----------------------------------------------------------"
 
-call s:LoadRandomColorScheme()
+if !s:LoadFavoriteColorScheme()
+	call s:LoadRandomColorScheme()
+endif

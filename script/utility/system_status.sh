@@ -11,45 +11,65 @@
 
 #dig www.baidu.com #查询DNS的时间
 
-find /etc/ -type f -iname '*pacnew' -or -name '*~' -or -iname '*.bak'
-find /opt/hxLinux -type f -name '*~' #-or -iname '*.bak'
+#0Black 1Blue 2Green 3Cyan青色 4Red 5Carmine洋红色 6Yellow 7White
 
 
+tput setf 6
+find /etc/ -iname '*.pacnew' -or -name '*~' -or -iname '*.bak'
+find /opt/hxLinux/ -name '*~' -or -iname '*.bak'
+
+
+tput setf 1
+tput setb 7
+tput rev
 lsmod | grep '[i]pv6'
 
 
+tput sgr0
+tput setf 2
 NEED_PKG=(
-aufs2 squashfs-tools
-pdnsd #varnish
-p7zip sqlite3 wget aria2
-#openbox lxde pekwm icewm dwm jwm pwm compiz Tint2
-gpicview feh viewnior #gpicview
+	aufs2 squashfs-tools
+	pdnsd #varnish
+	p7zip sqlite3 wget aria2
+	#openbox lxde pekwm icewm dwm jwm pwm compiz Tint2
+	gpicview feh viewnior #gpicview
+	zathura epdfview apvlv xpdf mupdf
 )
 for i in ${NEED_PKG[@]}; do
 	pacman -Q $i 1>/dev/null
 done
 
 
+tput sgr0
+tput setf 5
 INGNORE_PKG=(
-xterm xorg-twm avahi epiphany
-lvm2 vbetool
+	xterm xorg-twm avahi epiphany
+	lvm2 vbetool
 )
 for i in ${INGNORE_PKG[@]}; do
 	pacman -Q $i 2>/dev/null
 done
 
 
+tput sgr0
+tput smul
+tput setf 4
 pacman -Qdt
 
 
+tput sgr0
+tput setf 3
 for i in $(find ~/ -name '.recently-used.xbel*' -or -name '.lesshst'); do
 	echo $i
 done
 
 
+tput sgr0
+tput dim
 for i in $(ls /proc/sys/vm/dirty_*); do
 	cat $i
 done
+tput sgr0
 
 
 #du -sh ~/.opera/vps

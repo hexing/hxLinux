@@ -40,8 +40,8 @@ alias cp='cp -ip'
 alias rm='rm -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
-alias ln='ln -i'
-alias tar='tar -p'
+alias ln='ln -si'
+alias tar='tar -lh --suffix=~'
 alias echo='echo -e'
 alias mount='mount -o defaults,async,noatime,nodiratime'
 alias pm='pacman'
@@ -107,7 +107,9 @@ if [[ 'linux' == $TERM ]]; then
 fi
 
 
-#set -o vi #set -o emacs
+#set -o vi
+#set -o emacs
+#setmetamode meta
 
 #Check for an interactive session
 [ -z "$PS1" ] && return
