@@ -2,6 +2,7 @@
 #set bell-style visible
 set visible-stats on
 set show-all-if-ambiguous on
+set completion-ignore-case on
 #bind -p
 #set convert-meta on
 

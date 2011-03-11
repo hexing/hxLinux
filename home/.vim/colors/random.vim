@@ -52,7 +52,7 @@ if !exists("*s:LoadRandomColorScheme")
 
 	function! s:LoadFavoriteColorScheme()
 		let arrFavorite = ['hexing_wuye','jellybeans','impact','desert256',
-					\'desertedoceanburnt','lucius','zenburn','herald']
+					\'desertedoceanburnt','lucius','zenburn','herald','skittles_dark']
 		let n = localtime() % 7
 		if n > 0
 			return 0

@@ -32,7 +32,7 @@ NEED_PKG=(
 	pdnsd #varnish
 	p7zip sqlite3 wget aria2
 	#openbox lxde pekwm icewm dwm jwm pwm compiz Tint2
-	gpicview feh viewnior #gpicview
+	gpicview feh viewnior mirage gthumb #gpicview
 	zathura epdfview apvlv xpdf mupdf
 )
 for i in ${NEED_PKG[@]}; do
@@ -59,7 +59,7 @@ pacman -Qdt
 
 tput sgr0
 tput setf 3
-for i in $(find ~/ -name '.recently-used.xbel*' -or -name '.lesshst'); do
+for i in $(find ~/ -name '.recently-used.xbel*' -or -name '.lesshst' -or -name '.netrwhist'); do
 	echo $i
 done
 

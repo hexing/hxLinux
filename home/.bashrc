@@ -51,7 +51,8 @@ alias wget='wget -c'
 alias feh='feh --fullscreen --draw-filename'
 alias date='date "+%A, %B %d, %Y [%T]"'
 alias py='python'
-alias dog='cat'
+#alias dog='cat'
+alias rsync='rsync -zvrbulpgothAX --progress'
 
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
@@ -69,6 +70,8 @@ export HISTFILE="$MY_TMP_DIR/.bash_history"
 export TMPDIR="$MY_TMP_DIR/bash_tmp"
 mkDir $TMPDIR #&& [[ 'root' == $USER ]] && chmod a+w $TMPDIR
 [[ -x /usr/bin/vim ]] && export EDITOR=/usr/bin/vim
+export LESSHISTFILE=- #/dev/null
+export LESSHISTSIZE=9
 
 
 #{{{1 eval $(dircolors -b)
