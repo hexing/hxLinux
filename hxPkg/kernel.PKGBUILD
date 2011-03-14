@@ -1,4 +1,4 @@
-pkgname=kernel26-hexing
+pkgname=kernel26-HeXing_rc6
 basekernel=2.6.37.1
 pkgver=2.6.37.1
 pkgrel=1
@@ -14,7 +14,7 @@ install=kernel.INSTALL
 
 build() {
 	cd linux* || return 1
-	LOCAL_VERSION='-HeXing_rc3'
+	LOCAL_VERSION='-HeXing_rc6'
 
 	make mrproper
 	zcat /proc/config.gz > .config
