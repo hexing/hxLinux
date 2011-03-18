@@ -14,22 +14,22 @@
 #0Black 1Blue 2Green 3Cyan青色 4Red 5Carmine洋红色 6Yellow 7White
 
 
-tput setf 6
+tput setaf 6
 find /etc/ -iname '*.pacnew' -or -name '*~' -or -iname '*.bak'
 find /opt/hxLinux/ -name '*~' -or -iname '*.bak'
 
 
-tput setf 1
-tput setb 7
+tput setaf 1
+tput setab 7
 tput rev
 lsmod | grep '[i]pv6'
 
 
 tput sgr0
-tput setf 2
+tput setaf 2
 NEED_PKG=(
 	aufs2 squashfs-tools
-	pdnsd #varnish
+	pdnsd #varnish west-chamber
 	p7zip sqlite3 wget aria2
 	#openbox lxde pekwm icewm dwm jwm pwm compiz Tint2
 	gpicview feh viewnior mirage gthumb #gpicview
@@ -41,7 +41,7 @@ done
 
 
 tput sgr0
-tput setf 5
+tput setaf 5
 INGNORE_PKG=(
 	xterm xorg-twm avahi epiphany
 	lvm2 vbetool
@@ -53,12 +53,12 @@ done
 
 tput sgr0
 tput smul
-tput setf 4
+tput setaf 4
 pacman -Qdt
 
 
 tput sgr0
-tput setf 3
+tput setaf 3
 for i in $(find ~/ -name '.recently-used.xbel*' -or -name '.lesshst' -or -name '.netrwhist'); do
 	echo $i
 done

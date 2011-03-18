@@ -12,7 +12,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let g:colors_name = "SORuby"
+let g:colors_name = "soruby"
 
 hi link htmlTag                     xmlTag
 hi link htmlTagName                 xmlTagName

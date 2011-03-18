@@ -16,6 +16,7 @@ if !exists("*s:LoadRandomColorScheme")
 		let cfl = globpath(fnamemodify(s:self, ":h"), '*.vim')
 		let color_file_list = split(cfl, '\n')
 
+		"diff+kellys all-DimGreen2
 		if !has('gui_running')
 			let arr = ['doorhinge','lingodirector','PapayaWhip','baycomb',
 						\'industrial','busybee']
@@ -52,7 +53,8 @@ if !exists("*s:LoadRandomColorScheme")
 
 	function! s:LoadFavoriteColorScheme()
 		let arrFavorite = ['hexing_wuye','jellybeans','impact','desert256',
-					\'desertedoceanburnt','lucius','zenburn','herald','skittles_dark']
+					\'desertedoceanburnt','lucius','zenburn','herald','skittles_dark',
+					\'soruby','lettuce']
 		let n = localtime() % 7
 		if n > 0
 			return 0
