@@ -3,7 +3,7 @@
 
 
 HX_UTILITY = '/opt/hxLinux/script/utility'
-HX_RESUME = '/opt/myPrivateData/milestone/resume.txt'
+HX_RESUME = '/tmp/resume.txt'
 
 HEADER_INFO = '''
 您好:
