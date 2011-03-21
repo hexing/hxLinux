@@ -1,7 +1,0 @@
-#
-# /etc/modprobe.d/modprobe.conf (for v2.6 kernels)
-#
-
-# disable autoload of ipv6
-# options ipv6 disable=1
-alias net-pf-10 off
