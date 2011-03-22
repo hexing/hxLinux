@@ -51,15 +51,30 @@ if !exists("*s:LoadRandomColorScheme")
 		unlet! s:self
 	endfunction
 
-	function! s:LoadFavoriteColorScheme()
-		let arrFavorite = ['hexing_wuye','jellybeans','impact','desert256',
-					\'desertedoceanburnt','lucius','zenburn','herald','skittles_dark',
-					\'soruby','lettuce']
+	function! s:LoadDiffColorScheme()
 		let n = localtime() % 7
-		if n > 0
+		if n > 6
 			return 0
 		endif
 
+		let arrFavorite = ['hexing_wuye']
+		let n = len(arrFavorite)
+		let n = localtime() % n
+		let s = 'colors/'.arrFavorite[n].'.vim'
+		let s = globpath(&runtimepath, s)
+		exec 'source' s
+		return 1
+	endfunction
+
+	function! s:LoadFavoriteColorScheme()
+		let n = localtime() % 7
+		if n > 3
+			return 0
+		endif
+
+		let arrFavorite = ['hexing_wuye','jellybeans','impact','desert256',
+					\'desertedoceanburnt','lucius','zenburn','herald','skittles_dark',
+					\'soruby','lettuce','oceandeep','coffee','railscasts']
 		let n = len(arrFavorite)
 		let n = localtime() % n
 		let s = 'colors/'.arrFavorite[n].'.vim'
@@ -70,6 +85,10 @@ if !exists("*s:LoadRandomColorScheme")
 endif
 "----------------------------------------------------------"
 
-if !s:LoadFavoriteColorScheme()
+if &diff
+	if !s:LoadDiffColorScheme()
+		call s:LoadRandomColorScheme()
+	endif
+elseif !s:LoadFavoriteColorScheme()
 	call s:LoadRandomColorScheme()
 endif
