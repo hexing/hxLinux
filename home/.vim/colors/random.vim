@@ -17,15 +17,13 @@ if !exists("*s:LoadRandomColorScheme")
 		let color_file_list = split(cfl, '\n')
 
 		"diff+kellys all-DimGreen2
-		if !has('gui_running')
-			let arr = ['doorhinge','lingodirector','PapayaWhip','baycomb',
-						\'industrial','busybee']
+		if has('gui_running')
+			let arr = s:arrGui
 		else
-			let arr = []
+			let arr = s:arrTty
 		endif
 		if &diff
-			let nonList = ['adobe','buttercream','professional','pyte']
-			call extend(arr, nonList)
+			call extend(arr, s:arrDiff)
 		endif
 
 		let s = ''
@@ -36,7 +34,7 @@ if !exists("*s:LoadRandomColorScheme")
 			call filter(color_file_list, s)
 			let cnt -= len(color_file_list)
 			if cnt != 1
-				let &statusline .= ' $'.i.cnt.'$'
+				let &statusline .= ' $'.i.cnt.'<$'
 			endif
 		endfor
 
@@ -68,13 +66,29 @@ if !exists("*s:LoadRandomColorScheme")
 
 	function! s:LoadFavoriteColorScheme()
 		let n = localtime() % 7
-		if n > 3
+		if n > 1
 			return 0
 		endif
 
 		let arrFavorite = ['hexing_wuye','jellybeans','impact','desert256',
 					\'desertedoceanburnt','lucius','zenburn','herald','skittles_dark',
-					\'soruby','lettuce','oceandeep','coffee','railscasts']
+					\'soruby','lettuce','oceandeep','coffee','railscasts','zenburn']
+		if has('gui_running')
+			let arr = s:arrGui
+		else
+			let arr = s:arrTty
+		endif
+
+		for i in arr
+			let cnt = len(arrFavorite)
+			let s = 'v:val != "'.i.'"'
+			call filter(arrFavorite, s)
+			"let cnt -= len(arrFavorite)
+			"if cnt != 1
+			"	let &statusline .= ' $'.i.cnt.'>$'
+			"endif
+		endfor
+
 		let n = len(arrFavorite)
 		let n = localtime() % n
 		let s = 'colors/'.arrFavorite[n].'.vim'
@@ -85,6 +99,11 @@ if !exists("*s:LoadRandomColorScheme")
 endif
 "----------------------------------------------------------"
 
+let s:arrGui = ['impact']
+let s:arrTty = ['doorhinge','lingodirector','PapayaWhip','baycomb',
+					\'industrial','busybee']
+let s:arrDiff = ['adobe','buttercream','professional','pyte']
+
 if &diff
 	if !s:LoadDiffColorScheme()
 		call s:LoadRandomColorScheme()
@@ -92,3 +111,7 @@ if &diff
 elseif !s:LoadFavoriteColorScheme()
 	call s:LoadRandomColorScheme()
 endif
+
+unlet s:arrGui
+unlet s:arrTty
+unlet s:arrDiff
